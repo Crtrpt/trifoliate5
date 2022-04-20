@@ -1,5 +1,8 @@
 <template>
   <BaseView>
+    <template v-slot:title>
+        <div class=" text-gray-600 text-xs  bg-gray-100  pl-2 py-2 ">节点</div>
+    </template>
     <template v-slot:content>
       <div v-for="g in group" v-bind:key="g.name">
           <div class="p-1 title border text-xs text-gray-400"> {{g.name}}</div>

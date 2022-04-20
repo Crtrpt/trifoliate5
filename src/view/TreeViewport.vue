@@ -1,8 +1,11 @@
 <template>
     <BaseView>
-    <template v-slot:content>
-       <Tree v-for="node in document" :key="node" :data="node" :selectNode="selectNode" :hoverNode="hoverNode"></Tree>
+    <template v-slot:title>
+        <div class=" text-gray-600 text-xs  bg-gray-100  pl-2 py-2 ">结构</div>
     </template>
+      <template v-slot:content>
+        <Tree v-for="node in document" :key="node" :data="node" :selectNode="selectNode" :hoverNode="hoverNode"></Tree>
+      </template>
   </BaseView>
 </template>
 
