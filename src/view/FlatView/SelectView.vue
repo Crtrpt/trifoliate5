@@ -1,6 +1,5 @@
 <template>
     <div v-if="selectNode!=null" class="   border-2  transition-all
-
     border-blue-600 opacity-80 select-none pointer-events-none" :style="style"></div>
 </template>
 
