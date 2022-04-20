@@ -2,7 +2,6 @@
    <component v-bind:is="context.type"  v-bind="context.props"
    @click="click"
    >
-
          <template  v-for="(i,idx) in context.slot" :key="i" v-slot:[idx]>
            <AbstractElement  :context="c" v-for="(c) in i" :key="c"></AbstractElement>
         </template> 
@@ -24,6 +23,7 @@ export default defineComponent({
     },
     methods:{
         click(e:Event){
+            this.$store.dispatch("page/selectNode",this.context) 
             e.stopPropagation();
         }
     }
