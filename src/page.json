@@ -1,0 +1,86 @@
+[
+    {
+        "type": "Text",
+        "id": 0,
+        "name":"文本1",
+        "style":{
+            "display":"inline-block",
+            "width":"400px"
+        },
+        "props": {
+            "content": "文本1"
+        }
+    },
+    {
+        "type": "Text",
+        "name": "文本2",
+        "id": 1,
+        "style": {
+            "display": "inline-block",
+            "width": "400px"
+        },
+        "props": {
+            "content": "文本2"
+        }
+    },
+    {
+        "type": "Container",
+        "name": "容器2",
+        "id": 2,
+        "slot": {
+            "default": [
+                {
+                    "type": "Text",
+                    "name": "文本3",
+                    "id": 3,
+                    "props": {
+                        "content": "文本3"
+                    }
+                },
+                {
+                    "type": "Text",
+                    "name": "文本4",
+                    "id": 4,
+                    "props": {
+                        "content": "文本4"
+                    }
+                }
+            ]
+        }
+    },
+    {
+        "type": "NameSlot",
+        "name": "插槽5",
+        "id": 5,
+        "slot": {
+            "header": [
+                {
+                    "type": "Text",
+                    "name": "文本6",
+                    "id": 6,
+                    "props": {
+                        "content": "header slot"
+                    }
+                }
+            ],
+            "default": [
+                {
+                    "type": "Text",
+                    "name": "文本7",
+                    "id": 7,
+                    "props": {
+                        "content": "default slot1"
+                    }
+                },
+                {
+                    "type": "Text",
+                    "name": "文本8",
+                    "id": 8,
+                    "props": {
+                        "content": "default slot2"
+                    }
+                }
+            ]
+        }
+    }
+]

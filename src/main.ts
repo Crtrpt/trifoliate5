@@ -1,6 +1,8 @@
 import { createApp } from 'vue'
 import Trifoliate5 from "./Trifoliate5.vue";
 import "./index.css";
+import "./assets/main.css";
+
 
 import store from "./store";
 

@@ -1,7 +1,7 @@
 <template>
     <BaseView>
     <template v-slot:content>
-        tree view
+       <Tree v-for="node in document" :key="node" :data="node"></Tree>
     </template>
   </BaseView>
 </template>
@@ -10,7 +10,15 @@
 import { defineComponent } from "vue";
 
 export default defineComponent({
-    name:"TreeViewport"
+    name:"TreeViewport",
+    computed: {
+        document: {
+            get() {
+                return this.$store.getters["page/getDocument"];
+            },
+            set(value) { },
+        },
+    },
 })
 </script>
 

@@ -1,82 +1,15 @@
-var maxId = 0;
 const page = {
   namespaced: true,
   state: () => {
     return {
       //   dom tree
-      document: [
-        {
-          type: "Text",
-          id: maxId++,
-          props: {
-            content: "文本1",
-          },
-        },
-        {
-          type: "Text",
-          id: maxId++,
-          props: {
-            content: "文本2",
-          },
-        },
-        {
-          type: "Container",
-          id: maxId++,
-          slot: {
-            default: [
-              {
-                type: "Text",
-                id: maxId++,
-                props: {
-                  content: "文本3",
-                },
-              },
-              {
-                type: "Text",
-                id: maxId++,
-                props: {
-                  content: "文本4",
-                },
-              },
-            ],
-          },
-        },
-        {
-          type: "NameSlot",
-          id: maxId++,
-          slot: {
-            header: [
-              {
-                type: "Text",
-                id: maxId++,
-                props: {
-                  content: "header slot",
-                },
-              },
-            ],
-            default: [
-              {
-                type: "Text",
-                id: maxId++,
-                props: {
-                  content: "default slot1",
-                },
-              },
-              {
-                type: "Text",
-                id: maxId++,
-                props: {
-                  content: "default slot2",
-                },
-              },
-            ],
-          },
-        },
-      ],
+      document: [],
       //当前选择的元素
       currentNode: null,
+      //当前悬停的元素
+      hoverNode: null,
       //页面上的id 到节点的映射
-      idHash: new Map(),
+      hashIds: new Map(),
     };
   },
   getters: {
@@ -86,20 +19,65 @@ const page = {
     getCurrentNode: (state: any, getters: any) => {
       return state.currentNode;
     },
+    getHoverNode: (state: any, getters: any) => {
+      return state.hoverNode;
+    },
+    
   },
   mutations: {
+    initDocument(state: any, payload: any) {
+      state.document = payload.document;
+      state.hashIds=payload.hashIds
+    },
+    hoverNode(state: any, payload: any) {  
+      state.hoverNode = state.hashIds.get(payload.id);
+    },
     selectNode(state: any, payload: any) {
       state.currentNode = payload;
+    },
+    bindEl(state: any, payload: any) {
+          console.log(payload);
+        state.hashIds.set(payload.id, payload);
+        // console.log(payload);
+        // state.hashIds.get(payload.id).attr['el']=payload.el;
+    },
+    cancelSelectNode(state: any, payload: any) {
+      //取消选择
+      state.currentNode = null;
     },
     setCurrentProp(state: any, payload: any) {
       state.currentNode.props[payload.name] = payload.value;
     },
   },
   actions: {
+    initDocument: {
+      root: false,
+      handler(namespacedContext: any, payload: any) {
+        namespacedContext.commit("initDocument", payload);
+      },
+    },
     selectNode: {
       root: false,
       handler(namespacedContext: any, payload: any) {
         namespacedContext.commit("selectNode", payload);
+      },
+    },
+    hoverNode: {
+      root: false,
+      handler(namespacedContext: any, payload: any) {
+        namespacedContext.commit("hoverNode", payload);
+      },
+    },
+    bindEl: {
+      root: false,
+      handler(namespacedContext: any, payload: any) {
+        namespacedContext.commit("bindEl", payload);
+      },
+    },
+    cancelSelectNode: {
+      root: false,
+      handler(namespacedContext: any, payload: any) {
+        namespacedContext.commit("cancelSelectNode", payload);
       },
     },
     setCurrentProp: {
@@ -110,5 +88,6 @@ const page = {
     },
   },
 };
+
 
 export default page;

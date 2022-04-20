@@ -1,17 +1,35 @@
 <template>
   <BaseView v-if="node != null">
     <template v-slot:content>
-      <div class="border flex">
-        <div class="w-1/2 border-r p-1">id:</div>
-        <div class="w-1/2 p-1">{{ node.id }}</div>
+      <div class="flex">
+        <div
+          v-if="node.parent != null && node.parent.parent != null"
+          class="px-1"
+        >
+          {{ node.parent.parent.id }}
+        </div>
+        <div v-if="node.parent != null && node.parent.parent != null">/</div>
+        <div v-if="node.parent != null" class="px-1">{{ node.parent.id }}</div>
+        <div v-if="node.parent != null">/</div>
+        <div class="px-1">{{ node.id }}</div>
       </div>
-      <div class="border flex">
-        <div class="w-1/2 border-r p-1">type:</div>
-        <div class="w-1/2 p-1">{{ node.type }}</div>
-      </div>
-      <div v-for="(p, idx) in node.props" :key="p" class="border flex">
-        <div class="w-1/2 border-r p-1">{{ idx }}:</div>
-        <input class="w-1/2 p-1" :value="p" @change="changeProp($event, idx)" />
+      <div class="propList">
+        <div class="border flex">
+          <div class="w-1/2 border-r p-1">id:</div>
+          <div class="w-1/2 p-1">{{ node.id }}</div>
+        </div>
+        <div class="border flex">
+          <div class="w-1/2 border-r p-1">type:</div>
+          <div class="w-1/2 p-1">{{ node.type }}</div>
+        </div>
+        <div v-for="(p, idx) in node.props" :key="p" class="border flex">
+          <div class="w-1/2 border-r p-1">{{ idx }}:</div>
+          <input
+            class="w-1/2 p-1"
+            :value="p"
+            @change="changeProp($event, idx)"
+          />
+        </div>
       </div>
     </template>
   </BaseView>

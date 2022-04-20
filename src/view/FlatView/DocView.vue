@@ -1,6 +1,6 @@
 <template>
   <div
-    class="border shadow-sm"
+    class="doc border shadow-sm"
     :style="{
       width: '9000px',
       height: '9000px',

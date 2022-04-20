@@ -1,0 +1,21 @@
+#trifoliate5 ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+#trifoliate5 ::-webkit-scrollbar-corner {
+    background-color: transparent;
+}
+
+#trifoliate5 ::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.1);
+    background-clip: padding-box;
+    border: solid transparent;
+    border-radius: 10px;
+}
+
+#trifoliate5 ::-webkit-scrollbar-track {
+    background-clip: padding-box;
+    border: solid transparent;
+    border-width: 1px;
+}
