@@ -2,9 +2,10 @@
    <component v-bind:is="context.type"  v-bind="context.props"
    @click="click"
    >
-       <slot>
-           <AbstractElement  :context="i" v-for="i in context.children" v-bind:key="i"></AbstractElement>
-       </slot>
+
+         <template  v-for="(i,idx) in context.slot" :key="i" v-slot:[idx]>
+           <AbstractElement  :context="c" v-for="(c) in i" :key="c"></AbstractElement>
+        </template> 
    </component>
 </template>
 
@@ -16,6 +17,11 @@ export default defineComponent({
         context:Object
     },
     name:"AbstractElement",
+    data(){
+        return {
+            slot:"default"
+        }
+    },
     methods:{
         click(e:Event){
             e.stopPropagation();

@@ -18,23 +18,49 @@ const page = {
         },
         {
           type: "Container",
-          props: {
-            content: "容器",
+          slot: {
+            default: [
+              {
+                type: "Text",
+                props: {
+                  content: "文本3",
+                },
+              },
+              {
+                type: "Text",
+                props: {
+                  content: "文本4",
+                },
+              },
+            ],
           },
-          children: [
-            {
-              type: "Text",
-              props: {
-                content: "文本3",
+        },
+        {
+          type: "NameSlot",
+          slot: {
+            header: [
+              {
+                type: "Text",
+                props: {
+                  content: "header slot",
+                },
               },
-            },
-            {
-              type: "Text",
-              props: {
-                content: "文本4",
+            ],
+            default: [
+              {
+                type: "Text",
+                props: {
+                  content: "default slot1",
+                },
               },
-            },
-          ],
+              {
+                type: "Text",
+                props: {
+                  content: "default slot2",
+                },
+              },
+            ],
+          },
         },
       ],
       //页面上的id 到节点的映射

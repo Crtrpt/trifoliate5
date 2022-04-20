@@ -26,10 +26,13 @@ export default defineComponent({
           expland:true,
           list: [
                 {
-                  name:"node"
+                  name:"Node"
                 },
                 {
-                  name:"container"
+                  name:"Container"
+                },
+                 {
+                  name:"NameSlot"
                 }
           ],
         },
