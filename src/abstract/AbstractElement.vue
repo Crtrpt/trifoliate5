@@ -1,6 +1,6 @@
 <template>
   <div>
-      <component v-bind:is="data.component"></component>
+      <!-- <component ></component> -->
   </div>
 </template>
 
