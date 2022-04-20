@@ -1,6 +1,5 @@
 <template>
     <div>
-        容器
         <slot></slot>
     </div>
 </template>

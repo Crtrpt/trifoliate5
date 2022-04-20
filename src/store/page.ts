@@ -21,7 +21,20 @@ const page = {
           props: {
             content: "容器",
           },
-          children: [],
+          children: [
+            {
+              type: "Text",
+              props: {
+                content: "文本3",
+              },
+            },
+            {
+              type: "Text",
+              props: {
+                content: "文本4",
+              },
+            },
+          ],
         },
       ],
       //页面上的id 到节点的映射
