@@ -33,13 +33,10 @@ const page = {
       state.hoverNode = state.hashIds.get(payload.id);
     },
     selectNode(state: any, payload: any) {
-      state.currentNode = payload;
+      state.currentNode = state.hashIds.get(payload.id);
     },
     bindEl(state: any, payload: any) {
-          console.log(payload);
         state.hashIds.set(payload.id, payload);
-        // console.log(payload);
-        // state.hashIds.get(payload.id).attr['el']=payload.el;
     },
     cancelSelectNode(state: any, payload: any) {
       //取消选择

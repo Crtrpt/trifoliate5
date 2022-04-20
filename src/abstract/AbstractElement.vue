@@ -1,5 +1,6 @@
 <template>
    <component 
+   class=" select-none"
    v-bind:is="context.type" 
     v-bind="context.props"
    @click="click"

@@ -9,7 +9,8 @@
   },
   "dependencies": {
     "vue": "^3.2.25",
-    "vuex": "^4.0.2"
+    "vuex": "^4.0.2",
+    "keyboardjs": "^2.6.4"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^2.3.1",

@@ -5,7 +5,8 @@
         "name":"文本1",
         "style":{
             "display":"inline-block",
-            "width":"400px"
+            "width":"400px",
+            "height":"200px"
         },
         "props": {
             "content": "文本1"
@@ -17,7 +18,8 @@
         "id": 1,
         "style": {
             "display": "inline-block",
-            "width": "400px"
+            "width": "400px",
+            "height": "200px"
         },
         "props": {
             "content": "文本2"
@@ -27,6 +29,12 @@
         "type": "Container",
         "name": "容器2",
         "id": 2,
+        "style": {
+            
+            "width": "400px",
+            "height": "200px",
+            "border": "1px solid green"
+        },
         "slot": {
             "default": [
                 {
@@ -52,6 +60,12 @@
         "type": "NameSlot",
         "name": "插槽5",
         "id": 5,
+        "style": {
+           
+            "width": "400px",
+            "height": "200px",
+            "border":"1px solid red"
+        },
         "slot": {
             "header": [
                 {
@@ -59,25 +73,27 @@
                     "name": "文本6",
                     "id": 6,
                     "props": {
-                        "content": "header slot"
+                        "content": "header"
                     }
                 }
             ],
-            "default": [
+            "body": [
                 {
                     "type": "Text",
                     "name": "文本7",
                     "id": 7,
                     "props": {
-                        "content": "default slot1"
+                        "content": "body"
                     }
-                },
+                }
+            ],
+            "footer": [
                 {
                     "type": "Text",
                     "name": "文本8",
                     "id": 8,
                     "props": {
-                        "content": "default slot2"
+                        "content": "footer"
                     }
                 }
             ]

@@ -1,15 +1,14 @@
 <template>
-    <div v-if="hoverNode!=null" class=" transition-all border 
-       bg-blue-300
-    border-blue-400 opacity-60 select-none pointer-events-none" :style="style"></div>
+    <div v-if="selectNode!=null" class="   border-2  transition-all
+
+    border-blue-600 opacity-80 select-none pointer-events-none" :style="style"></div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
 
-
 export default defineComponent({
-    name: "HandlerView",
+    name: "SelectView",
     props:{
       workspaceRef:Object
     },
@@ -19,9 +18,9 @@ export default defineComponent({
       };
     },
     computed: {
-        hoverNode: {
+        selectNode: {
             get() {
-              var el:HTMLElement=this.$store.getters["page/getHoverNode"]?.attr['el'];
+              var el:HTMLElement=this.$store.getters["page/getCurrentNode"]?.attr['el'];
               if(el){
                 var rect=el?.getBoundingClientRect();
                 var wrect=this.workspaceRef.getBoundingClientRect();

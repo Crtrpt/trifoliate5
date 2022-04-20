@@ -1,6 +1,17 @@
 <template>
-  <div class="text-sm border border-white hover:border-blue-400 cursor-pointer" @click="click($event)" @mouseenter="mouseenter($event)">
-    {{ data.name }}
+  <div
+    :class="{
+      'bg-blue-300 text-white': selectNode?.id == data.id,
+     
+    }"
+    class="text-sm "
+    @click="click($event)"
+    @mouseenter="mouseenter($event)"
+  >
+    <div class="cursor-pointer pl-2 py-1  "
+    
+    
+    >{{ data.name }}</div>
     <div
       v-for="s in data.slot"
       :key="s"
@@ -8,7 +19,13 @@
         paddingLeft: 10 * data.level + 'px',
       }"
     >
-      <Tree v-for="n in s" :key="n" :data="n"></Tree>
+      <Tree
+        v-for="n in s"
+        :key="n"
+        :data="n"
+        :selectNode="selectNode"
+        :hoverNode="hoverNode"
+      ></Tree>
     </div>
   </div>
 </template>
@@ -20,6 +37,8 @@ export default defineComponent({
   name: "Tree",
   props: {
     data: Object,
+    selectNode: Object,
+    hoverNode: Object,
   },
   methods: {
     mouseenter(e) {
