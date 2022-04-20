@@ -2,6 +2,8 @@ import { createApp } from 'vue'
 import Trifoliate5 from "./Trifoliate5.vue";
 import "./index.css";
 
+import store from "./store";
+
 var componentsList = [];
 
 var components = import.meta.globEager("./component/*.vue");
@@ -25,6 +27,8 @@ for (const idx in node) {
 }
 
 var app = createApp(Trifoliate5);
+
+app.use(store);
 //注册组件
 componentsList.forEach((component) => {
   app.component(component.name, component);
