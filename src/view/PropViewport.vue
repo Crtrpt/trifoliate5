@@ -1,10 +1,12 @@
 <template>
   <BaseView v-if="node != null">
     <template v-slot:leading>
-            <font-awesome-icon  class="cursor-pointer px-2" icon="sliders" />
+      <font-awesome-icon class="cursor-pointer px-2" icon="sliders" />
     </template>
     <template v-slot:title>
-       <div class=" text-gray-600 text-xs  bg-gray-100  pl-2 py-2 ">{{$t('prop')}}</div>
+      <div class="text-gray-600 text-xs bg-gray-100 pl-2 py-2">
+        {{ $t("prop") }}
+      </div>
     </template>
     <template v-slot:content>
       <div class="flex">
@@ -15,7 +17,9 @@
           {{ node.parent.parent.name }}
         </div>
         <div v-if="node.parent != null && node.parent.parent != null">/</div>
-        <div v-if="node.parent != null" class="px-1">{{ node.parent.name }}</div>
+        <div v-if="node.parent != null" class="px-1">
+          {{ node.parent.name }}
+        </div>
         <div v-if="node.parent != null">/</div>
         <div class="px-1">{{ node.name }}</div>
       </div>
@@ -43,13 +47,14 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import TNode from "../type/tnode";
 
 export default defineComponent({
   name: "PropViewport",
   computed: {
     node: {
       get() {
-        return this.$store.getters["page/getCurrentNode"];
+        return this.$store.getters["page/getCurrentNode"] as TNode;
       },
       set(value) {},
     },

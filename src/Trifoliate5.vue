@@ -26,6 +26,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import page from "./page.json";
+import TNode from "./type/tnode";
 
 //初始化节点之间的关系
 function initRelation(
@@ -43,6 +44,7 @@ function initRelation(
       var slot = n.slot[key];
       initRelation(slot, n, level + 1, hashIds);
     }
+    n as TNode;
   });
 }
 

@@ -38,7 +38,7 @@ export default defineComponent({
           this.$store.getters["page/getHoverNode"]?.attr["el"];
         if (el) {
           var rect = el?.getBoundingClientRect();
-          var wrect = this.workspaceRef.getBoundingClientRect();
+          var wrect = this.workspaceRef?.getBoundingClientRect();
           // console.log(rect);
           this.style.width = rect.width + "px";
           this.style.height = rect.height + "px";

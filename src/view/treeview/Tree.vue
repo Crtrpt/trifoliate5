@@ -27,7 +27,7 @@
         icon="cube"
         v-if="!data.slot"
       />
-      <div>{{ data.name }}</div>
+      <div>{{ data?.name }}</div>
     </div>
     <template v-if="expland">
       <div
@@ -51,6 +51,7 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import TNode from "../../type/tnode";
 
 export default defineComponent({
   name: "Tree",

@@ -1,42 +1,35 @@
+import { TPage } from "../type/page";
+import TNode from "../type/tnode";
+
 const page = {
   namespaced: true,
   state: () => {
-    return {
-      //   dom tree
-      document: [],
-      //当前选择的元素
-      currentNode: null,
-      //当前悬停的元素
-      hoverNode: null,
-      //页面上的id 到节点的映射
-      hashIds: new Map(),
-    };
+    return new TPage();
   },
   getters: {
-    getDocument: (state: any, getters: any) => {
+    getDocument: (state: any, getters: any): TNode[] => {
       return state.document;
     },
-    getCurrentNode: (state: any, getters: any) => {
+    getCurrentNode: (state: any, getters: any): TNode => {
       return state.currentNode;
     },
-    getHoverNode: (state: any, getters: any) => {
+    getHoverNode: (state: any, getters: any): TNode => {
       return state.hoverNode;
     },
-    
   },
   mutations: {
     initDocument(state: any, payload: any) {
       state.document = payload.document;
-      state.hashIds=payload.hashIds
+      state.hashIds = payload.hashIds;
     },
-    hoverNode(state: any, payload: any) {  
+    hoverNode(state: any, payload: any) {
       state.hoverNode = state.hashIds.get(payload.id);
     },
     selectNode(state: any, payload: any) {
       state.currentNode = state.hashIds.get(payload.id);
     },
     bindEl(state: any, payload: any) {
-        state.hashIds.set(payload.id, payload);
+      state.hashIds.set(payload.id, payload);
     },
     cancelSelectNode(state: any, payload: any) {
       //取消选择
@@ -85,6 +78,5 @@ const page = {
     },
   },
 };
-
 
 export default page;

@@ -17,7 +17,7 @@ export default defineComponent({
     };
   },
   mounted() {
-    this.workspaceRef = this.$refs.doc.$el;
+    this.workspaceRef = this.$refs.doc.$el as HTMLElement;
   },
 });
 </script>

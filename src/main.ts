@@ -12,7 +12,6 @@ import {
   faChevronLeft,
   faChevronDown,
   faChevronRight,
-  faCircle,
   faCircleDot,
   faCube,
   faCubes,
