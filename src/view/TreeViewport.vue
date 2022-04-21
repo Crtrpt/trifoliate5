@@ -1,7 +1,10 @@
 <template>
     <BaseView>
+      <template v-slot:leading>
+            <font-awesome-icon  class="cursor-pointer px-2" icon="cubes-stacked" />
+    </template>
     <template v-slot:title>
-        <div class=" text-gray-600 text-xs  bg-gray-100  pl-2 py-2 ">结构</div>
+        <div class=" text-gray-600 text-xs    pl-2 py-2 ">结构</div>
     </template>
       <template v-slot:content>
         <Tree v-for="node in document" :key="node" :data="node" :selectNode="selectNode" :hoverNode="hoverNode"></Tree>

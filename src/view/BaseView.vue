@@ -1,9 +1,9 @@
 <template>
   <div class="border">
-    <div>
-      <slot name="action"> </slot>
-      <slot name="title"> </slot>
+    <div class=" flex items-center text-gray-400 bg-gray-50">
       <slot name="leading"> </slot>
+      <slot name="title"> </slot>
+      <slot name="action"> </slot>
     </div>
     <slot name="content"></slot>
   </div>

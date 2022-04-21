@@ -3,8 +3,26 @@ import Trifoliate5 from "./Trifoliate5.vue";
 import "./index.css";
 import "./assets/main.css";
 
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faUserSecret,faChevronLeft, faChevronDown, faChevronRight, faCircle, faCircleDot, faCube,faCubes, faCubesStacked, faSliders } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+
+
+library.add(
+  faUserSecret,
+  faChevronDown,
+  faChevronLeft,
+  faChevronRight,
+  faCircleDot,
+  faCube,
+  faCubes,
+  faCubesStacked,
+  faSliders
+);
 
 import store from "./store";
+
+
 
 var componentsList = [];
 
@@ -31,6 +49,8 @@ for (const idx in node) {
 var app = createApp(Trifoliate5);
 
 app.use(store);
+
+app.component("font-awesome-icon", FontAwesomeIcon);
 //注册组件
 componentsList.forEach((component) => {
   app.component(component.name, component);

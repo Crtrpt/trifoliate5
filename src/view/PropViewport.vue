@@ -1,5 +1,8 @@
 <template>
   <BaseView v-if="node != null">
+    <template v-slot:leading>
+            <font-awesome-icon  class="cursor-pointer px-2" icon="sliders" />
+    </template>
     <template v-slot:title>
        <div class=" text-gray-600 text-xs  bg-gray-100  pl-2 py-2 ">属性</div>
     </template>
