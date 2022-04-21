@@ -12,6 +12,7 @@
     "@fortawesome/vue-fontawesome": "^3.0.0-5",
     "keyboardjs": "^2.6.4",
     "vue": "^3.2.25",
+    "vue-i18n": "^9.1.9",
     "vuex": "^4.0.2"
   },
   "devDependencies": {

@@ -1,5 +1,9 @@
 import { createApp } from 'vue'
 import Trifoliate5 from "./Trifoliate5.vue";
+
+
+import store from "./store";
+
 import "./index.css";
 import "./assets/main.css";
 
@@ -7,6 +11,9 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { faUserSecret,faChevronLeft, faChevronDown, faChevronRight, faCircle, faCircleDot, faCube,faCubes, faCubesStacked, faSliders } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
+import { createI18n } from "vue-i18n";
+
+import messages from "./i18n/message.js";
 
 library.add(
   faUserSecret,
@@ -20,9 +27,11 @@ library.add(
   faSliders
 );
 
-import store from "./store";
-
-
+const i18n = createI18n({
+  locale: "en",
+  fallbackLocale: "en",
+  messages,
+});
 
 var componentsList = [];
 
@@ -49,6 +58,7 @@ for (const idx in node) {
 var app = createApp(Trifoliate5);
 
 app.use(store);
+app.use(i18n);
 
 app.component("font-awesome-icon", FontAwesomeIcon);
 //注册组件
