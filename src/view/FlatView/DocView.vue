@@ -14,17 +14,17 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import { mapGetters } from "vuex";
 import AbstractElement from "../../abstract/AbstractElement.vue";
 
 export default defineComponent({
   name: "DocView",
   computed: {
-    document: {
-      get() {
-        return this.$store.getters["page/getDocument"];
-      },
-      set(value) {},
-    },
+    ...mapGetters({
+      document: "page/getDocument",
+      selectNode: "page/getCurrentNode",
+      hoverNode: "page/getHoverNode",
+    }),
   },
   components: { AbstractElement },
 });

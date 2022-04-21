@@ -20,29 +20,16 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import { mapGetters } from "vuex";
 
 export default defineComponent({
   name: "TreeViewport",
   computed: {
-    document: {
-      get() {
-        return this.$store.getters["page/getDocument"];
-      },
-      set(value) {},
-    },
-
-    selectNode: {
-      get() {
-        return this.$store.getters["page/getCurrentNode"];
-      },
-      set(value) {},
-    },
-    hoverNode: {
-      get() {
-        return this.$store.getters["page/getHoverNode"];
-      },
-      set(value) {},
-    },
+    ...mapGetters({
+      document: "page/getDocument",
+      selectNode: "page/getCurrentNode",
+      hoverNode: "page/getHoverNode",
+    }),
   },
 });
 </script>
