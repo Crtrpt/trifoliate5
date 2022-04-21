@@ -2,11 +2,11 @@
     {
         "type": "Text",
         "id": 0,
-        "name":"文本1",
-        "style":{
-            "display":"inline-block",
-            "width":"400px",
-            "height":"200px"
+        "name": "文本1",
+        "style": {
+            "display": "inline-block",
+            "width": "400px",
+            "height": "200px"
         },
         "props": {
             "content": "文本1"
@@ -30,7 +30,6 @@
         "name": "容器2",
         "id": 2,
         "style": {
-            
             "width": "400px",
             "height": "200px",
             "border": "1px solid green"
@@ -61,10 +60,9 @@
         "name": "插槽5",
         "id": 5,
         "style": {
-           
             "width": "400px",
             "height": "200px",
-            "border":"1px solid red"
+            "border": "1px solid red"
         },
         "slot": {
             "header": [

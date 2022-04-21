@@ -1,6 +1,5 @@
-import { createApp } from 'vue'
+import { createApp } from "vue";
 import Trifoliate5 from "./Trifoliate5.vue";
-
 
 import store from "./store";
 
@@ -8,7 +7,18 @@ import "./index.css";
 import "./assets/main.css";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faUserSecret,faChevronLeft, faChevronDown, faChevronRight, faCircle, faCircleDot, faCube,faCubes, faCubesStacked, faSliders } from "@fortawesome/free-solid-svg-icons";
+import {
+  faUserSecret,
+  faChevronLeft,
+  faChevronDown,
+  faChevronRight,
+  faCircle,
+  faCircleDot,
+  faCube,
+  faCubes,
+  faCubesStacked,
+  faSliders,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 import { createI18n } from "vue-i18n";
@@ -66,4 +76,4 @@ componentsList.forEach((component) => {
   app.component(component.name, component);
 });
 
-app.mount('#app')
+app.mount("#app");

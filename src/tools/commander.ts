@@ -1,11 +1,6 @@
-export class Command {
-  param: any;
-  redo: any;
-  undo: any;
-}
 export class Commander {
   commandList: any[] = [];
-  capacity = 100;
+  capacity = 5;
   cursor = 0;
   exec(parm: any, doAction: Function, undoAction?: Function) {
     if (this.cursor != this.commandList.length) {
