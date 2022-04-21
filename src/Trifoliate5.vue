@@ -44,7 +44,7 @@ export default defineComponent({
       var payload=page;
       var hashIds=new Map();
       initRelation(payload,null,1,hashIds);
-      console.log(payload);
+      // console.log(payload);
       this.$store.dispatch("page/initDocument",{
         document:payload,
         hashIds:hashIds

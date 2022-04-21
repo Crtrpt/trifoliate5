@@ -11,7 +11,7 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { faUserSecret,faChevronLeft, faChevronDown, faChevronRight, faCircle, faCircleDot, faCube,faCubes, faCubesStacked, faSliders } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
-import { createI18n } from "vue-i18n";
+import { createI18n } from "vue-i18n/dist/vue-i18n.cjs.js";
 
 import messages from "./i18n/message.js";
 
