@@ -38,7 +38,7 @@ import { defineComponent } from "vue";
 export default defineComponent({
   name: "LeftViewport",
   methods: {
-    expland(e) {
+    expland(e:any) {
       e.expland = !e.expland;
     },
   },

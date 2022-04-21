@@ -34,7 +34,7 @@ export default defineComponent({
 
               return this.$store.getters["page/getHoverNode"];
             },
-            set(value) { },
+            set(value:any) { },
         },
     },
     components: {  }

@@ -57,7 +57,7 @@ export default defineComponent({
     }
   },
   methods: {
-    mouseenter(e) {
+    mouseenter(e:Event) {
       this.$store.dispatch("page/hoverNode", this.data);
       e.stopPropagation();
     },

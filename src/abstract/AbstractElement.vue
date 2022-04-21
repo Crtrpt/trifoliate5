@@ -33,11 +33,11 @@ export default defineComponent({
        this.$store.dispatch("page/bindEl",this.context) 
     },
     methods:{
-        mouseenter(e){
+        mouseenter(e:Event){
             this.$store.dispatch("page/hoverNode",this.context) 
             e.stopPropagation();
         },
-        mouseleave(e){
+        mouseleave(e:Event){
         //      this.$store.dispatch("page/selectNode",this.context) 
         //      e.stopPropagation();
         },

@@ -1,6 +1,5 @@
 <template>
     <div v-if="hoverNode!=null" class="  border  transition-all
-
     border-blue-400 opacity-60 select-none pointer-events-none" :style="style"></div>
 </template>
 
@@ -32,10 +31,9 @@ export default defineComponent({
 
                 // console.log( this.style);
               }
-
               return this.$store.getters["page/getHoverNode"];
             },
-            set(value) { },
+            set(value:any) { },
         },
     },
     components: {  }
