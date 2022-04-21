@@ -1,13 +1,13 @@
 <template>
   <BaseView>
     <template v-slot:leading>
-            <font-awesome-icon  class="cursor-pointer px-2" icon="cubes" />
+      <font-awesome-icon class="cursor-pointer px-2" icon="cubes" />
     </template>
     <template v-slot:title>
-      <div class="text-gray-600 text-xs  pl-2 py-2">{{$t('node')}}</div>
+      <div class="text-gray-600 text-xs pl-2 py-2">{{ $t("node") }}</div>
     </template>
     <template v-slot:content>
-      <div v-for="g in group" v-bind:key="g.name" class=" select-none">
+      <div v-for="g in group" v-bind:key="g.name" class="select-none">
         <div
           class="p-2 title border text-xs text-gray-600 flex hover:bg-gray-200"
           @click="expland(g)"
@@ -36,9 +36,9 @@
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "LeftViewport",
+  name: "NodeViewport",
   methods: {
-    expland(e:any) {
+    expland(e: any) {
       e.expland = !e.expland;
     },
   },

@@ -1,6 +1,10 @@
 <template>
   <div id="trifoliate5" class="flex flex-row w-fit overflow-hidden">
-    <LeftViewport class="w-1/6 shrink-0"></LeftViewport>
+    <div class="w-1/6 shrink-0">
+      <NodeViewport class="shrink-1 h-1/2 overflow-auto"></NodeViewport>
+      <EnvViewport class="shrink-1 h-1/2 overflow-auto"></EnvViewport>
+    </div>
+
     <FlatViewport
       class="grow-0 shrink-1 overflow-auto min-w-0 min-h-0"
     ></FlatViewport>

@@ -27,7 +27,12 @@
         icon="cube"
         v-if="!data.slot"
       />
-      <div>{{ data?.name }}</div>
+      <div class="grow">{{ data?.name }}</div>
+      <div class="p-1 flex shrink-1 text-xs text-gray-800">
+        <font-awesome-icon class="cursor-pointer px-1" icon="eye" />
+        <font-awesome-icon class="cursor-pointer px-1" icon="lock-open" />
+        <font-awesome-icon class="cursor-pointer px-1" icon="trash" />
+      </div>
     </div>
     <template v-if="expland">
       <div

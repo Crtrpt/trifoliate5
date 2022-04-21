@@ -2,19 +2,19 @@
     {
         "type": "Text",
         "id": 0,
-        "name": "文本1",
+        "name": "text1",
         "style": {
             "display": "inline-block",
             "width": "400px",
             "height": "200px"
         },
         "props": {
-            "content": "文本1"
+            "content": "@name"
         }
     },
     {
         "type": "Text",
-        "name": "文本2",
+        "name": "text2",
         "id": 1,
         "style": {
             "display": "inline-block",
@@ -22,7 +22,7 @@
             "height": "200px"
         },
         "props": {
-            "content": "文本2"
+            "content": "@name+1"
         }
     },
     {
@@ -38,7 +38,7 @@
             "default": [
                 {
                     "type": "Text",
-                    "name": "文本3",
+                    "name": "test3",
                     "id": 3,
                     "props": {
                         "content": "文本3"
@@ -46,7 +46,7 @@
                 },
                 {
                     "type": "Text",
-                    "name": "文本4",
+                    "name": "test4",
                     "id": 4,
                     "props": {
                         "content": "文本4"
@@ -68,7 +68,7 @@
             "header": [
                 {
                     "type": "Text",
-                    "name": "文本6",
+                    "name": "test6",
                     "id": 6,
                     "props": {
                         "content": "header"
@@ -78,7 +78,7 @@
             "body": [
                 {
                     "type": "Text",
-                    "name": "文本7",
+                    "name": "test7",
                     "id": 7,
                     "props": {
                         "content": "body"

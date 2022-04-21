@@ -17,6 +17,12 @@ import {
   faCubes,
   faCubesStacked,
   faSliders,
+  faAdd,
+  faTrash,
+  faDotCircle,
+  faEye,
+  faLock,
+  faLockOpen,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
@@ -33,7 +39,13 @@ library.add(
   faCube,
   faCubes,
   faCubesStacked,
-  faSliders
+  faSliders,
+  faAdd,
+  faTrash,
+  faDotCircle,
+  faEye,
+  faLock,
+  faLockOpen
 );
 
 const i18n = createI18n({

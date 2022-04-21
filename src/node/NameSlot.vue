@@ -11,6 +11,12 @@ import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "NameSlot",
+  props: {
+    content: {
+      type: String,
+      default: "title",
+    },
+  },
 });
 </script>
 
