@@ -2,6 +2,7 @@
   "name": "trifoliate5",
   "private": true,
   "version": "0.0.1",
+  "repository": "https://github.com/Crtrpt/trifoliate5",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -18,7 +19,8 @@
     "vue": "^3.2.25",
     "vue-i18n": "^9.1.9",
     "vue-router": "^4.0.14",
-    "vuex": "^4.0.2"
+    "vuex": "^4.0.2",
+    "nanopop": "^2.1.0"
   },
   "devDependencies": {
     "@types/jest": "^27.4.1",

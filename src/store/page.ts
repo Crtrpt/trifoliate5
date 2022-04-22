@@ -76,6 +76,20 @@ const page = {
         namespacedContext.commit("setCurrentProp", payload);
       },
     },
+
+    redo: {
+      root: false,
+      handler(namespacedContext: any, payload: any) {
+        console.log("重做");
+      },
+    },
+
+    undo: {
+      root: false,
+      handler(namespacedContext: any, payload: any) {
+        console.log("撤销");
+      },
+    },
   },
 };
 

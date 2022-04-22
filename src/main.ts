@@ -23,12 +23,15 @@ import {
   faEye,
   faLock,
   faLockOpen,
+  faRedo,
+  faUndo,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 import { createI18n } from "vue-i18n";
 
 import messages from "./i18n/message.js";
+import tooltip from "./directive/tooltip";
 
 library.add(
   faUserSecret,
@@ -45,7 +48,9 @@ library.add(
   faDotCircle,
   faEye,
   faLock,
-  faLockOpen
+  faLockOpen,
+  faRedo,
+  faUndo
 );
 
 const i18n = createI18n({
@@ -80,6 +85,8 @@ var app = createApp(Trifoliate5);
 
 app.use(store);
 app.use(i18n);
+
+app.directive("tooltip", tooltip);
 
 app.component("font-awesome-icon", FontAwesomeIcon);
 //注册组件

@@ -4,7 +4,7 @@
       <font-awesome-icon class="cursor-pointer px-2" icon="cubes" />
     </template>
     <template v-slot:title>
-      <div class="text-gray-600 text-xs pl-2 py-2">{{ $t("node") }}</div>
+      <div class="text-gray-600 text-xs pl-2 py-2">{{ $t("variable") }}</div>
     </template>
     <template v-slot:content>
       <div v-for="g in group" v-bind:key="g.name" class="select-none">
