@@ -20,35 +20,35 @@
     </a>
     <div class="flex grow border-r">
       <div class="flex items-center grow">
-        <div v-tooltip="$t('redo')">
+        <div v-tooltip="$t('redo') + ' Ctrl+Z'">
           <font-awesome-icon
             class="cursor-pointer px-2 text-gray-400 hover:text-gray-600"
             icon="redo"
             @click="$store.dispatch('page/redo')"
           />
         </div>
-        <div v-tooltip="$t('undo')">
+        <div v-tooltip="$t('undo') + ' Ctrl+Y'">
           <font-awesome-icon
             class="cursor-pointer px-2 text-gray-400 hover:text-gray-600"
             icon="undo"
             @click="$store.dispatch('page/undo')"
           />
         </div>
-        <div v-tooltip="$t('copy')">
+        <div v-tooltip="$t('copy') + ' Ctrl+C'">
           <font-awesome-icon
             class="cursor-pointer px-2 text-gray-400 hover:text-gray-600"
             icon="copy"
             @click="$store.dispatch('page/copy')"
           />
         </div>
-        <div v-tooltip="$t('cut')">
+        <div v-tooltip="$t('cut') + ' Ctrl+C'">
           <font-awesome-icon
             class="cursor-pointer px-2 text-gray-400 hover:text-gray-600"
             icon="cut"
             @click="$store.dispatch('page/cut')"
           />
         </div>
-        <div v-tooltip="$t('paste')">
+        <div v-tooltip="$t('paste') + ' Ctrl+V'">
           <font-awesome-icon
             class="cursor-pointer px-2 text-gray-400 hover:text-gray-600"
             icon="paste"
@@ -57,6 +57,20 @@
         </div>
       </div>
       <div class="flex items-center">
+        <div v-tooltip="$t('save')">
+          <font-awesome-icon
+            class="cursor-pointer px-2 text-gray-400 hover:text-gray-600"
+            icon="save"
+            @click="$store.dispatch('page/save')"
+          />
+        </div>
+        <div v-tooltip="$t('open')">
+          <font-awesome-icon
+            class="cursor-pointer px-2 text-gray-400 hover:text-gray-600"
+            icon="folder-open"
+            @click="$store.dispatch('page/open')"
+          />
+        </div>
         <div v-tooltip="$t('publish')">
           <font-awesome-icon
             class="cursor-pointer px-2 text-gray-400 hover:text-gray-600"
@@ -67,10 +81,13 @@
       </div>
     </div>
     <div
+      class="flex items-center justify-end px-5"
       :style="{
         width: '300px',
       }"
-    ></div>
+    >
+      <div>En/Cn</div>
+    </div>
   </div>
 </template>
 

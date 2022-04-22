@@ -9,5 +9,7 @@ var cn = {
   cut: "剪切",
   paste: "粘贴",
   publish: "发布",
+  save: "保存",
+  open: "打开",
 };
 export default cn;
