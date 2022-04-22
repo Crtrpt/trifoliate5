@@ -1,20 +1,59 @@
 <template>
   <div
-    v-if="hoverNode != null"
-    class="
-      border
-      transition-all
-      border-blue-400
-      opacity-60
-      select-none
-      pointer-events-none
-    "
+    v-if="hoverNode != null && selectNode?.id != hoverNode?.id"
     :style="style"
-  ></div>
+    class="border border-dashed select-none pointer-events-none shadow"
+  >
+    <div
+      class="
+        w-full
+        h-full
+        bg-blue-200 bg-opacity-10
+        transition-all
+        border-blue-400
+        opacity-60
+      "
+    ></div>
+    <div
+      class="
+        name
+        text-blue-400
+        bg-white
+        border border-blue-400
+        -top-7
+        absolute
+        rounded-full
+        px-3
+        py-0.5
+        text-xs
+      "
+    >
+      {{ hoverNode.name }}
+    </div>
+
+    <div class="name absolute -bottom-6 left-0 right-0 flex">
+      <div
+        class="
+          mx-auto
+          inline
+          rounded-full
+          border border-blue-500
+          cursor-pointer
+          text-blue-500
+          px-3
+          py-0.5
+          text-xs
+        "
+      >
+        {{ style.width }} {{ style.height }}
+      </div>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import { mapGetters } from "vuex";
 
 export default defineComponent({
   name: "HoverView",
@@ -32,6 +71,9 @@ export default defineComponent({
     };
   },
   computed: {
+    ...mapGetters({
+      selectNode: "page/getCurrentNode",
+    }),
     hoverNode: {
       get() {
         var el: HTMLElement =
@@ -56,5 +98,8 @@ export default defineComponent({
 });
 </script>
 
+
+<style scoped>
+</style>
 
 

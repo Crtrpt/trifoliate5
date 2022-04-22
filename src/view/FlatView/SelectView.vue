@@ -1,16 +1,59 @@
 <template>
-  <div
-    v-if="selectNode != null"
-    class="
-      border-2
-      transition-all
-      border-blue-600
-      opacity-80
-      select-none
-      pointer-events-none
-    "
-    :style="style"
-  ></div>
+  <div v-if="selectNode != null" :style="style">
+    <div
+      class="
+        w-full
+        h-full
+        border
+        bg-blue-200 bg-opacity-10
+        transition-all
+        border-blue-600
+        opacity-80
+        select-none
+        pointer-events-none
+        shadow-inner
+      "
+    ></div>
+
+    <div
+      class="
+        name
+        border
+        bg-blue-500
+        hover:bg-blue-600
+        cursor-pointer
+        text-white
+        absolute
+        -top-7
+        rounded-full
+        px-3
+        py-0.5
+        text-xs
+      "
+    >
+      {{ selectNode.name }}
+    </div>
+
+    <div class="name absolute -bottom-6 left-0 right-0 flex">
+      <div
+        class="
+          mx-auto
+          inline
+          rounded-full
+          border
+          bg-blue-500
+          hover:bg-blue-600
+          cursor-pointer
+          text-white
+          px-3
+          py-0.5
+          text-xs
+        "
+      >
+        {{ style.width }} {{ style.height }}
+      </div>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
