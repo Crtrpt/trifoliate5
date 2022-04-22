@@ -1,5 +1,6 @@
 import { TPage } from "../type/page";
 import TNode from "../type/tnode";
+import { DocumentSave, initRelation } from "../utils/JsonToDoc";
 
 const page = {
   namespaced: true,
@@ -37,6 +38,9 @@ const page = {
     },
     setCurrentProp(state: any, payload: any) {
       state.currentNode.props[payload.name] = payload.value;
+    },
+    save(state: any, payload: any) {
+      DocumentSave(state);
     },
   },
   actions: {
@@ -92,14 +96,38 @@ const page = {
     },
     open: {
       root: false,
-      handler(namespacedContext: any, payload: any) {
-        console.log("打开");
+      async handler(namespacedContext: any, payload: any) {
+        const pickerOpts = {
+          types: [
+            {
+              accept: {
+                "application/*": [".tp"],
+              },
+            },
+          ],
+          excludeAcceptAllOption: true,
+          multiple: false,
+        };
+        let fileHandle;
+
+        [fileHandle] = await window.showOpenFilePicker(pickerOpts);
+
+        const fileData = await fileHandle.getFile();
+        const contents = await fileData.text();
+
+        var payload = JSON.parse(contents);
+        var hashIds = new Map();
+        initRelation(payload, null, 1, hashIds);
+        namespacedContext.commit("initDocument", {
+          document: payload,
+          hashIds: hashIds,
+        });
       },
     },
     save: {
       root: false,
-      handler(namespacedContext: any, payload: any) {
-        console.log("保存");
+      async handler(namespacedContext: any, payload: any) {
+        namespacedContext.commit("save", {});
       },
     },
   },

@@ -34,34 +34,17 @@
 import { defineComponent } from "vue";
 import page from "./page.json";
 import TNode from "./type/tnode";
+import { initRelation } from "./utils/JsonToDoc";
 import ToolViewport from "./view/ToolViewport.vue";
 
 //初始化节点之间的关系
-function initRelation(
-  node: any,
-  parent: any,
-  level: number,
-  hashIds: Map<string, any>
-) {
-  node.forEach((n: any) => {
-    n.parent = parent;
-    n.level = level;
-    n.attr = [];
-    hashIds.set(n.id, n);
-    for (const key in n.slot) {
-      var slot = n.slot[key];
-      initRelation(slot, n, level + 1, hashIds);
-    }
-    n as TNode;
-  });
-}
 
 export default defineComponent({
   name: "Trifoliate5",
   mounted() {
-    var payload = page;
+    var payload = [];
     var hashIds = new Map();
-    initRelation(payload, null, 1, hashIds);
+    // initRelation(payload, null, 1, hashIds);
     // console.log(payload);
     this.$store.dispatch("page/initDocument", {
       document: payload,

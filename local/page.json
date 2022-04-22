@@ -1,0 +1,100 @@
+[
+    {
+        "type": "Text",
+        "id": 0,
+        "name": "text1",
+        "style": {
+            "display": "inline-block",
+            "width": "400px",
+            "height": "200px"
+        },
+        "props": {
+            "content": "@name"
+        }
+    },
+    {
+        "type": "Text",
+        "name": "text2",
+        "id": 1,
+        "style": {
+            "display": "inline-block",
+            "width": "400px",
+            "height": "200px"
+        },
+        "props": {
+            "content": "@name+1"
+        }
+    },
+    {
+        "type": "Container",
+        "name": "容器2",
+        "id": 2,
+        "style": {
+            "width": "400px",
+            "height": "200px",
+            "border": "1px solid green"
+        },
+        "slot": {
+            "default": [
+                {
+                    "type": "Text",
+                    "name": "test3",
+                    "id": 3,
+                    "props": {
+                        "content": "文本3"
+                    }
+                },
+                {
+                    "type": "Text",
+                    "name": "test4",
+                    "id": 4,
+                    "props": {
+                        "content": "文本4"
+                    }
+                }
+            ]
+        }
+    },
+    {
+        "type": "NameSlot",
+        "name": "插槽5",
+        "id": 5,
+        "style": {
+            "width": "400px",
+            "height": "200px",
+            "border": "1px solid red"
+        },
+        "slot": {
+            "header": [
+                {
+                    "type": "Text",
+                    "name": "test6",
+                    "id": 6,
+                    "props": {
+                        "content": "header"
+                    }
+                }
+            ],
+            "body": [
+                {
+                    "type": "Text",
+                    "name": "test7",
+                    "id": 7,
+                    "props": {
+                        "content": "body"
+                    }
+                }
+            ],
+            "footer": [
+                {
+                    "type": "Text",
+                    "name": "文本8",
+                    "id": 8,
+                    "props": {
+                        "content": "footer"
+                    }
+                }
+            ]
+        }
+    }
+]
