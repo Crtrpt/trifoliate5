@@ -9,11 +9,81 @@
         transition-all
         border-blue-600
         opacity-80
-        select-none
-        pointer-events-none
         shadow-inner
       "
-    ></div>
+      @dblclick="dbclick($event)"
+    >
+      <div
+        class="
+          left_top
+          border
+          hover:bg-blue-100
+          border-blue-600
+          handler
+          absolute
+          -left-1
+          -top-1
+        "
+        @mousedown="setHandler('leftTop')"
+      ></div>
+      <div
+        class="
+          left_bottom
+          border
+          hover:bg-blue-100
+          border-blue-600
+          handler
+          absolute
+          -left-1
+          -bottom-1
+        "
+        @mousedown="setHandler('leftBottom')"
+      ></div>
+      <div
+        class="
+          right_top
+          border
+          hover:bg-blue-100
+          border-blue-600
+          handler
+          absolute
+          -right-1
+          -top-1
+        "
+        @mousedown="setHandler('rightTop')"
+      ></div>
+      <div
+        class="
+          right_bottom
+          border
+          hover:bg-blue-100
+          border-blue-600
+          handler
+          absolute
+          -right-1
+          -bottom-1
+        "
+        @mousedown="setHandler('rightBottom')"
+      ></div>
+
+      <div
+        class="left gutter absolute -left-1 top-1 bottom-1 w-2"
+        @mousedown="setHandler('left')"
+      ></div>
+      <div
+        class="right gutter absolute -right-1 top-1 bottom-1 w-2"
+        @mousedown="setHandler('right')"
+      ></div>
+
+      <div
+        class="top gutter absolute -top-1 left-1 right-1 h-2"
+        @mousedown="setHandler('top')"
+      ></div>
+      <div
+        class="bottom gutter absolute -bottom-1 left-1 right-1 h-2"
+        @mousedown="setHandler('bottom')"
+      ></div>
+    </div>
 
     <div
       class="
@@ -64,8 +134,18 @@ export default defineComponent({
   props: {
     workspaceRef: Object,
   },
+  methods: {
+    setHandler(postion: any) {
+      this.handler = postion;
+    },
+    dbclick(e: Event) {
+      this.$store.dispatch("page/cancelSelectNode", {});
+      e.stopPropagation();
+    },
+  },
   data() {
     return {
+      handler: null,
       style: {
         width: "0px",
         height: "0px",
@@ -99,6 +179,75 @@ export default defineComponent({
   components: {},
 });
 </script>
+
+
+<style lang="scss" scoped>
+.handler {
+  width: 10px;
+  height: 10px;
+  // border:1px solid blue;
+  background-color: white;
+}
+.gutter {
+  border: 2px solid #ff00ff00;
+}
+.left {
+  cursor: e-resize;
+}
+.right {
+  cursor: e-resize;
+}
+.top {
+  cursor: s-resize;
+}
+.bottom {
+  cursor: s-resize;
+}
+
+.center {
+  grid-area: center;
+}
+
+.left_top {
+  cursor: se-resize;
+}
+.left_bottom {
+  cursor: sw-resize;
+}
+.right_top {
+  cursor: sw-resize;
+}
+.right_bottom {
+  cursor: se-resize;
+}
+
+.left_up {
+  cursor: e-resize;
+}
+.left_down {
+  cursor: e-resize;
+}
+.right_up {
+  cursor: e-resize;
+}
+.right_down {
+  cursor: e-resize;
+}
+
+.top_left {
+  cursor: s-resize;
+}
+.top_right {
+  cursor: s-resize;
+}
+.bottom_left {
+  cursor: s-resize;
+}
+.bottom_right {
+  cursor: s-resize;
+}
+</style>
+
 
 
 
