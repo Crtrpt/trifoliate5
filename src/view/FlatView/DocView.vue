@@ -2,8 +2,8 @@
   <div
     class="doc border shadow-sm"
     :style="{
-      width: '9000px',
-      height: '9000px',
+      width: '1024px',
+      height: '960px',
     }"
   >
     <template v-for="node in document" :key="node">

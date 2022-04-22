@@ -90,6 +90,18 @@ const page = {
         console.log("撤销");
       },
     },
+    open: {
+      root: false,
+      handler(namespacedContext: any, payload: any) {
+        console.log("打开");
+      },
+    },
+    save: {
+      root: false,
+      handler(namespacedContext: any, payload: any) {
+        console.log("保存");
+      },
+    },
   },
 };
 

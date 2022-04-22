@@ -1,5 +1,5 @@
 <template>
-  <WorkSpaceView class="bg-gray-100 absolute shadow-inner" ref="workspace">
+  <WorkSpaceView class="bg-gray-100 absolute" ref="workspace">
     <DocView ref="doc"></DocView>
     <HoverView class="absolute top-0" :workspaceRef="workspaceRef" />
     <SelectView class="absolute top-0" :workspaceRef="workspaceRef" />

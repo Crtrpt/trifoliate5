@@ -1,5 +1,5 @@
 <template>
-  <div class="flex hover:shadow">
+  <div class="flex hover:shadow bg-gray-100 border-b border-gray-200">
     <a
       :href="Href"
       class="
@@ -20,6 +20,22 @@
     </a>
     <div class="flex grow border-r">
       <div class="flex items-center grow">
+        <div class="flex items-center px-4">
+          <div v-tooltip="$t('open') + ' Ctrl+O'">
+            <font-awesome-icon
+              class="cursor-pointer px-2 text-gray-400 hover:text-gray-600"
+              icon="folder-open"
+              @click="$store.dispatch('page/open')"
+            />
+          </div>
+          <div v-tooltip="$t('save') + ' Ctrl+S'">
+            <font-awesome-icon
+              class="cursor-pointer px-2 text-gray-400 hover:text-gray-600"
+              icon="save"
+              @click="$store.dispatch('page/save')"
+            />
+          </div>
+        </div>
         <div v-tooltip="$t('redo') + ' Ctrl+Z'">
           <font-awesome-icon
             class="cursor-pointer px-2 text-gray-400 hover:text-gray-600"
@@ -57,20 +73,6 @@
         </div>
       </div>
       <div class="flex items-center">
-        <div v-tooltip="$t('save')">
-          <font-awesome-icon
-            class="cursor-pointer px-2 text-gray-400 hover:text-gray-600"
-            icon="save"
-            @click="$store.dispatch('page/save')"
-          />
-        </div>
-        <div v-tooltip="$t('open')">
-          <font-awesome-icon
-            class="cursor-pointer px-2 text-gray-400 hover:text-gray-600"
-            icon="folder-open"
-            @click="$store.dispatch('page/open')"
-          />
-        </div>
         <div v-tooltip="$t('publish')">
           <font-awesome-icon
             class="cursor-pointer px-2 text-gray-400 hover:text-gray-600"
