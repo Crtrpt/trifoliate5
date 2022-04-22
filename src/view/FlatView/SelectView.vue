@@ -18,7 +18,7 @@
     <div
       class="
         name
-        border
+        border border-blue-500
         bg-blue-500
         hover:bg-blue-600
         cursor-pointer
@@ -91,7 +91,7 @@ export default defineComponent({
           // console.log( this.style);
         }
 
-        return this.$store.getters["page/getHoverNode"];
+        return this.$store.getters["page/getCurrentNode"];
       },
       set(value: any) {},
     },
