@@ -25,6 +25,10 @@ import {
   faLockOpen,
   faRedo,
   faUndo,
+  faCopy,
+  faCut,
+  faPaste,
+  faRightToBracket,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
@@ -50,11 +54,15 @@ library.add(
   faLock,
   faLockOpen,
   faRedo,
-  faUndo
+  faUndo,
+  faCopy,
+  faCut,
+  faPaste,
+  faRightToBracket
 );
 
 const i18n = createI18n({
-  locale: "en",
+  locale: "cn",
   fallbackLocale: "en",
   messages,
 });

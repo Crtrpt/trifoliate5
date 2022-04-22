@@ -12,10 +12,8 @@ export default {
       window.document.body.appendChild(popperEl);
     }
     el.onmouseenter = (e) => {
-      console.log(e);
       if (typeof binding.value == "object") {
         popperEl.textContent = binding.value.text;
-        console.log(binding.value.position);
         reposition(e.srcElement, popperEl, { position: "right-middle" });
       } else {
         popperEl.textContent = binding.value;
