@@ -9,7 +9,7 @@
             "height": "200px"
         },
         "props": {
-            "content": "输入你要显示的文本"
+            "content": "input your text"
         }
     },
     {
@@ -22,12 +22,12 @@
             "height": "200px"
         },
         "props": {
-            "content": "输入你要显示的文本"
+            "content": "input your text"
         }
     },
     {
         "type": "Container",
-        "name": "容器2",
+        "name": "container2",
         "id": 2,
         "style": {
             "width": "400px",
@@ -41,7 +41,7 @@
                     "name": "test3",
                     "id": 3,
                     "props": {
-                        "content": "文本3"
+                        "content": "text3"
                     }
                 },
                 {
@@ -49,7 +49,7 @@
                     "name": "test4",
                     "id": 4,
                     "props": {
-                        "content": "文本4"
+                        "content": "text4"
                     }
                 }
             ]
@@ -57,7 +57,7 @@
     },
     {
         "type": "NameSlot",
-        "name": "插槽5",
+        "name": "slot5",
         "id": 5,
         "style": {
             "width": "400px",
@@ -88,7 +88,7 @@
             "footer": [
                 {
                     "type": "Text",
-                    "name": "文本8",
+                    "name": "text8",
                     "id": 8,
                     "props": {
                         "content": "footer"
