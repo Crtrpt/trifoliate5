@@ -1,6 +1,7 @@
 var en = {
   node: "Node",
   prop: "Prop",
+  event: "Event",
   struct: "Struct",
   redo: "Redo",
   undo: "Undo",

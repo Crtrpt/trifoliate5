@@ -105,6 +105,7 @@
     </div>
 
     <div
+      v-if="parseInt(style.height) > 30"
       class="name absolute -bottom-6 left-0 right-0 flex pointer-events-none"
     >
       <div

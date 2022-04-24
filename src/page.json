@@ -13,13 +13,11 @@
         }
     },
     {
-        "type": "Text",
-        "name": "text2",
+        "type": "Button",
+        "name": "button1",
         "id": 1,
         "style": {
-            "display": "inline-block",
-            "width": "400px",
-            "height": "200px"
+            "display": "inline-block"
         },
         "props": {
             "content": "input your text"

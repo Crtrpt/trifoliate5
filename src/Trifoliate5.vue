@@ -17,7 +17,7 @@
             width: '300px',
           }"
         ></TreeViewport>
-        <PropViewport class="shrink-1 h-1/2 overflow-auto" />
+        <TabView class="shrink-1 h-1/2 overflow-auto" :data="right"></TabView>
       </div>
     </div>
     <StatusViewport />
@@ -41,6 +41,20 @@ import { initRelation } from "./utils/JsonToDoc";
 
 export default defineComponent({
   name: "Trifoliate5",
+  data() {
+    return {
+      right: [
+        {
+          title: "prop",
+          component: "PropViewport",
+        },
+        {
+          title: "event",
+          component: "EventViewport",
+        },
+      ],
+    };
+  },
   mounted() {
     var payload = page;
     var hashIds = new Map();

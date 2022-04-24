@@ -1,28 +1,15 @@
 <template>
   <BaseView v-if="node != null">
-    <template v-slot:leading>
+    <!-- <template v-slot:leading>
       <font-awesome-icon class="cursor-pointer px-2" icon="sliders" />
     </template>
     <template v-slot:title>
       <div class="text-gray-600 text-xs bg-gray-100 pl-2 py-2">
         {{ $t("prop") }}
       </div>
-    </template>
+    </template> -->
     <template v-slot:content>
-      <div class="flex">
-        <div
-          v-if="node.parent != null && node.parent.parent != null"
-          class="px-1"
-        >
-          {{ node.parent.parent.name }}
-        </div>
-        <div v-if="node.parent != null && node.parent.parent != null">/</div>
-        <div v-if="node.parent != null" class="px-1">
-          {{ node.parent.name }}
-        </div>
-        <div v-if="node.parent != null">/</div>
-        <div class="px-1">{{ node.name }}</div>
-      </div>
+      <ShortPath :node="node"></ShortPath>
       <div class="propList">
         <!-- <div class="border flex">
           <div class="w-1/3 border-r p-1">id:</div>
@@ -57,6 +44,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import TNode from "../type/tnode";
+import ShortPath from "./propview/ShortPath.vue";
 
 export default defineComponent({
   name: "PropViewport",
@@ -76,6 +64,7 @@ export default defineComponent({
       });
     },
   },
+  components: { ShortPath },
 });
 </script>
 

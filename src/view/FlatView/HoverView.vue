@@ -26,6 +26,7 @@
         px-3
         py-0.5
         text-xs
+        whitespace-nowrap
       "
     >
       {{ hoverNode.name }}
@@ -76,20 +77,17 @@ export default defineComponent({
     }),
     hoverNode: {
       get() {
-        var el: HTMLElement =
-          this.$store.getters["page/getHoverNode"]?.attr["el"];
-        if (el) {
+        var node = this.$store.getters["page/getHoverNode"];
+        if (node) {
+          var el = node.attr["el"];
           var rect = el?.getBoundingClientRect();
           var wrect = this.workspaceRef?.getBoundingClientRect();
-          // console.log(rect);
           this.style.width = rect.width + "px";
           this.style.height = rect.height + "px";
           this.style.top = rect.top - wrect.top + "px";
           this.style.left = rect.left - wrect.left + "px";
-
-          // console.log( this.style);
         }
-        return this.$store.getters["page/getHoverNode"];
+        return node;
       },
       set(value: any) {},
     },

@@ -15,6 +15,7 @@
       "
     ></div>
     <div
+      v-if="parseInt(style.height) > 30"
       class="
         name
         text-blue-400

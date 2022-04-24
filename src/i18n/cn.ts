@@ -1,6 +1,8 @@
 var cn = {
   node: "节点",
   prop: "属性",
+  event: "事件",
+  style: "样式",
   struct: "结构",
   redo: "重做",
   undo: "撤销",
