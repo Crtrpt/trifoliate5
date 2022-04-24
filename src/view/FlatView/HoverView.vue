@@ -82,8 +82,8 @@ export default defineComponent({
           var el = node.attr["el"];
           var rect = el?.getBoundingClientRect();
           var wrect = this.workspaceRef?.getBoundingClientRect();
-          this.style.width = rect.width + "px";
-          this.style.height = rect.height + "px";
+          this.style.width = parseInt(rect.width) + "px";
+          this.style.height = parseInt(rect.height) + "px";
           this.style.top = rect.top - wrect.top + "px";
           this.style.left = rect.left - wrect.left + "px";
         }

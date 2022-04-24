@@ -30,7 +30,6 @@
   </div>
 </template>
 
-
 <script lang="ts">
 import { defineComponent } from "vue";
 import DragNodeMixin from "../../behavior/dragNode";

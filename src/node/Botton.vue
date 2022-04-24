@@ -1,5 +1,5 @@
 <template>
-  <div class="rounded hover:bg-gray-200">
+  <div class="rounded p-10 hover:bg-gray-200">
     {{ content }}
   </div>
 </template>
