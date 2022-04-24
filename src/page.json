@@ -9,7 +9,7 @@
             "height": "200px"
         },
         "props": {
-            "content": "@name"
+            "content": "输入你要显示的文本"
         }
     },
     {
@@ -22,7 +22,7 @@
             "height": "200px"
         },
         "props": {
-            "content": "@name+1"
+            "content": "输入你要显示的文本"
         }
     },
     {

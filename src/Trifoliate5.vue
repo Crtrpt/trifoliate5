@@ -20,6 +20,7 @@
         <PropViewport class="shrink-1 h-1/2 overflow-auto" />
       </div>
     </div>
+    <StatusViewport />
   </div>
 </template>
 
@@ -35,22 +36,20 @@ import { defineComponent } from "vue";
 import page from "./page.json";
 import TNode from "./type/tnode";
 import { initRelation } from "./utils/JsonToDoc";
-import ToolViewport from "./view/ToolViewport.vue";
 
 //初始化节点之间的关系
 
 export default defineComponent({
   name: "Trifoliate5",
   mounted() {
-    var payload = [];
+    var payload = page;
     var hashIds = new Map();
-    // initRelation(payload, null, 1, hashIds);
+    initRelation(payload, null, 1, hashIds);
     // console.log(payload);
     this.$store.dispatch("page/initDocument", {
       document: payload,
       hashIds: hashIds,
     });
   },
-  components: { ToolViewport },
 });
 </script>

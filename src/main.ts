@@ -31,6 +31,7 @@ import {
   faRightToBracket,
   faSave,
   faFolderOpen,
+  faKeyboard,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
@@ -62,7 +63,9 @@ library.add(
   faPaste,
   faRightToBracket,
   faSave,
-  faFolderOpen
+  faFolderOpen,
+  faKeyboard,
+  faChevronRight
 );
 
 const i18n = createI18n({

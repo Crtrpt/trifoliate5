@@ -3,6 +3,7 @@
     <DocView ref="doc"></DocView>
     <HoverView class="absolute top-0" :workspaceRef="workspaceRef" />
     <SelectView class="absolute top-0" :workspaceRef="workspaceRef" />
+    <DragoverView class="absolute top-0" :workspaceRef="workspaceRef" />
   </WorkSpaceView>
 </template>
 

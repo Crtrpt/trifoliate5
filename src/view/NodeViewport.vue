@@ -23,6 +23,8 @@
             v-for="i in g.list"
             v-bind:key="i.name"
             class="border p-4 cursor-pointer hover:bg-gray-200"
+            @dragstart="dragstart"
+            draggable="true"
           >
             {{ i.name }}
           </div>
@@ -40,6 +42,9 @@ export default defineComponent({
   methods: {
     expland(e: any) {
       e.expland = !e.expland;
+    },
+    dragstart(e: Event) {
+      console.log("drag");
     },
   },
   data() {

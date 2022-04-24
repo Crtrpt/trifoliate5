@@ -10,7 +10,7 @@ export function initRelation(
   node.forEach((n: any) => {
     n.parent = parent;
     n.level = level;
-    n.attr = [];
+    n.attr = new Map();
     hashIds.set(n.id, n);
     for (const key in n.slot) {
       var slot = n.slot[key];

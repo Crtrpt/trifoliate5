@@ -17,11 +17,21 @@ const page = {
     getHoverNode: (state: any, getters: any): TNode => {
       return state.hoverNode;
     },
+    getDragoverNode: (state: any, getters: any): TNode => {
+      return state.dragoverNode;
+    },
   },
   mutations: {
     initDocument(state: any, payload: any) {
       state.document = payload.document;
       state.hashIds = payload.hashIds;
+    },
+    dragoverNode(state: any, payload: any) {
+      state.dragoverNode = state.hashIds.get(payload.id);
+    },
+    cancelDragoverNode(state: any, payload: any) {
+      //取消放置
+      state.dragoverNode = null;
     },
     hoverNode(state: any, payload: any) {
       state.hoverNode = state.hashIds.get(payload.id);
@@ -60,6 +70,18 @@ const page = {
       root: false,
       handler(namespacedContext: any, payload: any) {
         namespacedContext.commit("hoverNode", payload);
+      },
+    },
+    dragoverNode: {
+      root: false,
+      handler(namespacedContext: any, payload: any) {
+        namespacedContext.commit("dragoverNode", payload);
+      },
+    },
+    cancelDragoverNode: {
+      root: false,
+      handler(namespacedContext: any, payload: any) {
+        namespacedContext.commit("cancelDragoverNode", payload);
       },
     },
     bindEl: {

@@ -8,6 +8,11 @@
     @mouseleave="mouseleave"
     :style="context.style"
     ref="node"
+    @drop="drop($event)"
+    @dragenter="dragenter($event)"
+    @dragleave="dragleave($event)"
+    @dragover="dragover($event)"
+    @drag="drag($event)"
   >
     <template v-for="(i, idx) in context.slot" :key="i" v-slot:[idx]>
       <AbstractElement :context="c" v-for="c in i" :key="c"></AbstractElement>
@@ -17,8 +22,10 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import DragNodeMixin from "../behavior/dragNode";
 
 export default defineComponent({
+  mixins: [DragNodeMixin],
   props: {
     context: Object,
   },
