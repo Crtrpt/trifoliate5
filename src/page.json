@@ -9,6 +9,15 @@
         }
     },
     {
+        "type": "el-button",
+        "name": "el-button-1",
+        "id": 2000,
+        "content": "button",
+        "props": {
+            "title": "222"
+        }
+    },
+    {
         "type": "Text",
         "id": 0,
         "name": "text1",

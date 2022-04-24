@@ -21,9 +21,7 @@ export default defineComponent({
       curSelect: this.select || 0,
     };
   },
-  created() {
-    console.log(this.$refs);
-  },
+  created() {},
   methods: {
     click(e: Event) {
       console.log("click");

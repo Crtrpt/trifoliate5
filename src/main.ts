@@ -35,13 +35,12 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
-import Antd from "ant-design-vue";
-import "ant-design-vue/dist/antd.css";
-
 import { createI18n } from "vue-i18n";
 
 import messages from "./i18n/message.js";
 import tooltip from "./directive/tooltip";
+import installAntv from "./integrated/antv";
+import installElementPlus from "./integrated/elementPlus";
 
 library.add(
   faUserSecret,
@@ -112,6 +111,7 @@ componentsList.forEach((component) => {
   app.component(component.name, component);
 });
 
-app.use(Antd);
+installAntv(app);
+installElementPlus(app);
 
 app.mount("#app");
