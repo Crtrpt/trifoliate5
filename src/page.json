@@ -94,5 +94,18 @@
                 }
             ]
         }
+    },
+    {
+        "type": "Tab",
+        "name": "tab1",
+        "id": 9,
+        "style": {
+            "width": "400px",
+            "height": "200px",
+            "border": "1px solid red"
+        },
+        "slot": {
+            "default": []
+        }
     }
 ]

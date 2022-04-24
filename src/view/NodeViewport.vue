@@ -63,6 +63,9 @@ export default defineComponent({
             {
               name: "NameSlot",
             },
+            {
+              name: "Tab",
+            },
           ],
         },
         {
