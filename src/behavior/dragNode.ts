@@ -29,6 +29,7 @@ const DragNodeMixin = {
     dragover(e: Event) {
       this.$store.dispatch("page/dragoverNode", this.context);
       e.preventDefault();
+      e.stopPropagation();
     },
   },
 };
