@@ -2,7 +2,7 @@
   <div
     v-if="dragoverNode != null"
     :style="style"
-    class="border border-dashed select-none pointer-events-none shadow"
+    class="border border-dashed pointer-events-none select-none shadow"
   >
     <div
       class="
@@ -29,6 +29,8 @@
         h-full
         top-0
         text-xs
+        pointer-events-none
+        select-none
       "
     >
       <font-awesome-icon icon="add" />
