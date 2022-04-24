@@ -50,6 +50,13 @@ const page = {
       //取消选择
       state.currentNode = null;
     },
+    changeSelectStyle(state: any, payload: any) {
+      //取消选择
+      state.currentNode.style = {
+        ...state.currentNode.style,
+        ...payload,
+      };
+    },
     setCurrentProp(state: any, payload: any) {
       state.currentNode.props[payload.name] = payload.value;
     },
@@ -104,6 +111,12 @@ const page = {
       root: false,
       handler(namespacedContext: any, payload: any) {
         namespacedContext.commit("cancelSelectNode", payload);
+      },
+    },
+    changeSelectStyle: {
+      root: false,
+      handler(namespacedContext: any, payload: any) {
+        namespacedContext.commit("changeSelectStyle", payload);
       },
     },
     setCurrentProp: {

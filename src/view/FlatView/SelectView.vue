@@ -156,29 +156,21 @@ export default defineComponent({
       this.start = JSON.parse(JSON.stringify(this.style));
       this.$emit("move", { value: true });
     },
+    moveComplete() {},
     moveCallback(offset: any) {
-      // if (this.handler == "center") {
-      //   this.style.left = parseInt(this.start.left) + offset.x + "px";
-      //   this.style.top = parseInt(this.start.top) + offset.y + "px";
-      //   return;
-      // }
       if (this.handler == "left") {
         this.style.left = parseInt(this.start.left) + offset.x + "px";
         this.style.width = parseInt(this.start.width) + -offset.x + "px";
-        return;
       }
       if (this.handler == "right") {
         this.style.width = parseInt(this.start.width) + offset.x + "px";
-        return;
       }
       if (this.handler == "top") {
         this.style.top = parseInt(this.start.top) + offset.y + "px";
         this.style.height = parseInt(this.start.height) + -offset.y + "px";
-        return;
       }
       if (this.handler == "bottom") {
         this.style.height = parseInt(this.start.height) + offset.y + "px";
-        return;
       }
 
       if (this.handler == "leftTop") {
@@ -186,14 +178,12 @@ export default defineComponent({
         this.style.top = parseInt(this.start.top) + offset.y + "px";
         this.style.width = parseInt(this.start.width) + -offset.x + "px";
         this.style.height = parseInt(this.start.height) + -offset.y + "px";
-        return;
       }
       if (this.handler == "leftBottom") {
         // this.style.top = parseInt(this.start.top) + -offset.y + "px";
         this.style.left = parseInt(this.start.left) + offset.x + "px";
         this.style.width = parseInt(this.start.width) + -offset.x + "px";
         this.style.height = parseInt(this.start.height) + offset.y + "px";
-        return;
       }
 
       if (this.handler == "rightTop") {
@@ -201,7 +191,6 @@ export default defineComponent({
         // this.style.left = parseInt(this.start.left) + offset.x + "px";
         this.style.width = parseInt(this.start.width) + offset.x + "px";
         this.style.height = parseInt(this.start.height) + -offset.y + "px";
-        return;
       }
 
       if (this.handler == "rightBottom") {
@@ -209,8 +198,9 @@ export default defineComponent({
         // this.style.left = parseInt(this.start.left) + offset.x + "px";
         this.style.width = parseInt(this.start.width) + offset.x + "px";
         this.style.height = parseInt(this.start.height) + offset.y + "px";
-        return;
       }
+
+      this.$store.dispatch("page/changeSelectStyle", this.style);
     },
     dbclick(e: Event) {
       this.$store.dispatch("page/cancelSelectNode", {});
@@ -243,7 +233,7 @@ export default defineComponent({
           this.style.height = parseInt(rect.height) + "px";
           this.style.top = rect.top - wrect.top + "px";
           this.style.left = rect.left - wrect.left + "px";
-          this.position = node.style.position;
+          // this.position = node.style.position;
           // console.log( this.style);
         }
 
