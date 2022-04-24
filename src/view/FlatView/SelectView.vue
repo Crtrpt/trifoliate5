@@ -104,7 +104,9 @@
       {{ selectNode.name }}
     </div>
 
-    <div class="name absolute -bottom-6 left-0 right-0 flex">
+    <div
+      class="name absolute -bottom-6 left-0 right-0 flex pointer-events-none"
+    >
       <div
         class="
           mx-auto
