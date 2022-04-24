@@ -26,6 +26,7 @@
         px-3
         py-0.5
         text-xs
+        overflow-visible
         whitespace-nowrap
       "
     >
@@ -44,6 +45,8 @@
           px-3
           py-0.5
           text-xs
+          overflow-visible
+          whitespace-nowrap
         "
       >
         {{ style.width }} {{ style.height }}

@@ -1,9 +1,6 @@
 <template>
   <div>
-    <div>
-      <div v-for="d in item" :key="d">{{ d.title }}</div>
-    </div>
-    <slot ref="children" />
+    <slot></slot>
   </div>
 </template>
 
@@ -11,18 +8,15 @@
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "Tab",
+  name: "TabItem",
   props: {
-    select: Number,
+    title: String,
   },
   data() {
     return {
       item: [],
       curSelect: this.select || 0,
     };
-  },
-  created() {
-    console.log(this.$refs);
   },
   methods: {
     click(e: Event) {

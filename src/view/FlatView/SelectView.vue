@@ -99,6 +99,8 @@
         px-3
         py-0.5
         text-xs
+        overflow-visible
+        whitespace-nowrap
       "
     >
       {{ selectNode.name }}
@@ -106,7 +108,17 @@
 
     <div
       v-if="parseInt(style.height) > 30"
-      class="name absolute -bottom-6 left-0 right-0 flex pointer-events-none"
+      class="
+        name
+        absolute
+        -bottom-6
+        left-0
+        right-0
+        flex
+        pointer-events-none
+        overflow-visible
+        whitespace-nowrap
+      "
     >
       <div
         class="
@@ -166,8 +178,8 @@ export default defineComponent({
           var rect = el?.getBoundingClientRect();
           var wrect = this.workspaceRef?.getBoundingClientRect();
           // console.log(rect);
-          this.style.width = rect.width + "px";
-          this.style.height = rect.height + "px";
+          this.style.width = parseInt(rect.width) + "px";
+          this.style.height = parseInt(rect.height) + "px";
           this.style.top = rect.top - wrect.top + "px";
           this.style.left = rect.left - wrect.left + "px";
 

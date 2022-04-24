@@ -14,8 +14,11 @@
     @dragover="dragover($event)"
     @drag="drag($event)"
   >
+    <template v-if="context.content">
+      {{ context.content }}
+    </template>
     <template v-for="(i, idx) in context.slot" :key="i" v-slot:[idx]>
-      <AbstractElement :context="c" v-for="c in i" :key="c"></AbstractElement>
+      <AbstractElement :context="c" v-for="c in i" :key="c"> </AbstractElement>
     </template>
   </component>
 </template>

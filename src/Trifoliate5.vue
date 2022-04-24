@@ -1,6 +1,7 @@
 <template>
   <div id="trifoliate5" class="flex flex-col">
     <ToolViewport></ToolViewport>
+
     <div class="flex flex-row overflow-hidden grow w-full">
       <div class="w-1/6 shrink-0">
         <NodeViewport class="shrink-1 h-1/2 overflow-auto"></NodeViewport>
