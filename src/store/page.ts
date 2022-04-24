@@ -36,6 +36,10 @@ const page = {
     hoverNode(state: any, payload: any) {
       state.hoverNode = state.hashIds.get(payload.id);
     },
+    cancelHoverNode(state: any, payload: any) {
+      //取消悬停
+      state.hoverNode = null;
+    },
     selectNode(state: any, payload: any) {
       state.currentNode = state.hashIds.get(payload.id);
     },
@@ -70,6 +74,12 @@ const page = {
       root: false,
       handler(namespacedContext: any, payload: any) {
         namespacedContext.commit("hoverNode", payload);
+      },
+    },
+    cancelHoverNode: {
+      root: false,
+      handler(namespacedContext: any, payload: any) {
+        namespacedContext.commit("cancelHoverNode", payload);
       },
     },
     dragoverNode: {

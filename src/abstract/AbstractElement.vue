@@ -45,8 +45,8 @@ export default defineComponent({
       e.stopPropagation();
     },
     mouseleave(e: Event) {
-      //      this.$store.dispatch("page/selectNode",this.context)
-      //      e.stopPropagation();
+      this.$store.dispatch("page/cancelHoverNode", this.context);
+      e.stopPropagation();
     },
     click(e: Event) {
       this.$store.dispatch("page/selectNode", this.context);
