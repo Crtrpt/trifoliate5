@@ -50,6 +50,10 @@ export default defineComponent({
           title: "event",
           component: "EventViewport",
         },
+        {
+          title: "style",
+          component: "StyleViewport",
+        },
       ],
     };
   },

@@ -1,53 +1,13 @@
 [
     {
-        "type": "a-button",
-        "name": "a-button-1",
-        "id": 999,
-        "content": "button",
-        "props": {
-            "title": "222"
-        }
-    },
-    {
-        "type": "el-button",
-        "name": "el-button-1",
-        "id": 2000,
-        "content": "button",
-        "props": {
-            "title": "222"
-        }
-    },
-    {
-        "type": "Text",
-        "id": 0,
-        "name": "text1",
-        "style": {
-            "display": "inline-block",
-            "width": "400px",
-            "height": "200px"
-        },
-        "props": {
-            "content": "input your text"
-        }
-    },
-    {
-        "type": "Button",
-        "name": "button1",
-        "id": 1,
-        "style": {
-            "display": "inline-block"
-        },
-        "props": {
-            "content": "input your text"
-        }
-    },
-    {
         "type": "Container",
         "name": "container2",
         "id": 2,
         "style": {
             "width": "400px",
             "height": "200px",
+            "left": "10px",
+            "top": "10px",
             "border": "1px solid green"
         },
         "slot": {
@@ -72,99 +32,33 @@
         }
     },
     {
-        "type": "NameSlot",
-        "name": "slot5",
-        "id": 5,
+        "type": "Container",
+        "name": "container2",
+        "id": 3,
         "style": {
             "width": "400px",
             "height": "200px",
-            "border": "1px solid red"
-        },
-        "slot": {
-            "header": [
-                {
-                    "type": "Text",
-                    "name": "test6",
-                    "id": 6,
-                    "props": {
-                        "content": "header"
-                    }
-                }
-            ],
-            "body": [
-                {
-                    "type": "Text",
-                    "name": "test7",
-                    "id": 7,
-                    "props": {
-                        "content": "body"
-                    }
-                }
-            ],
-            "footer": [
-                {
-                    "type": "Text",
-                    "name": "text8",
-                    "id": 8,
-                    "props": {
-                        "content": "footer"
-                    }
-                }
-            ]
-        }
-    },
-    {
-        "type": "Tab",
-        "name": "tab1",
-        "id": 9,
-        "style": {
-            "width": "400px",
-            "height": "200px",
-            "border": "1px solid red"
-        },
-        "props": {
-            "select": 0
+            "left": "100px",
+            "top": "100px",
+            "position": "absolute",
+            "border": "1px solid green"
         },
         "slot": {
             "default": [
                 {
-                    "type": "TabItem",
-                    "name": "tabItem1",
-                    "id": 10,
+                    "type": "Text",
+                    "name": "test3",
+                    "id": 3,
                     "props": {
-                        "title": "item1"
-                    },
-                    "slot": {
-                        "default": [
-                            {
-                                "type": "Text",
-                                "name": "test12",
-                                "id": 12,
-                                "props": {
-                                    "content": "text12"
-                                }
-                            }
-                        ]
+                        "content": "text3"
                     }
                 },
                 {
-                    "type": "TabItem",
-                    "name": "tabItem2",
-                    "id": 11,
+                    "type": "Text",
+                    "name": "test4",
+                    "id": 4,
                     "props": {
-                        "title": "item2"
-                    },
-                    "slot": {
-                        "default": [
-                            {
-                                "type": "Text",
-                                "name": "test13",
-                                "id": 13,
-                                "props": {
-                                    "content": "text13"
-                                }
-                            }
-                        ]
+                        "content": "text4"
                     }
                 }
             ]
