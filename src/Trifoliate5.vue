@@ -1,13 +1,11 @@
 <template>
   <div id="trifoliate5" class="flex flex-col">
     <ToolViewport></ToolViewport>
-
     <div class="flex flex-row overflow-hidden grow w-full">
       <div class="w-1/6 shrink-0">
         <NodeViewport class="shrink-1 h-1/2 overflow-auto"></NodeViewport>
         <EnvViewport class="shrink-1 h-1/2 overflow-auto"></EnvViewport>
       </div>
-
       <FlatViewport
         class="grow-0 shrink-1 overflow-auto min-w-0 min-h-0"
       ></FlatViewport>
@@ -35,7 +33,6 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import page from "./page.json";
-import TNode from "./type/tnode";
 import { initRelation } from "./utils/JsonToDoc";
 
 //初始化节点之间的关系
