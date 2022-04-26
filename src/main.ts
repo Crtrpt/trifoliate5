@@ -7,6 +7,8 @@ import "./index.css";
 import "./assets/main.css";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
+
+import { createRouter, createWebHashHistory } from "vue-router";
 import {
   faUserSecret,
   faChevronLeft,
@@ -102,6 +104,12 @@ var app = createApp(Trifoliate5);
 
 app.use(store);
 app.use(i18n);
+
+const router = createRouter({
+  routes: [],
+  history: createWebHashHistory(),
+});
+app.use(router);
 
 app.directive("tooltip", tooltip);
 

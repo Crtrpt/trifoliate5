@@ -1,5 +1,5 @@
 <template>
-  <div class="border">
+  <div class="border flex flex-col">
     <div class="flex items-center text-gray-400 bg-gray-50">
       <slot name="leading"> </slot>
       <slot name="title"> </slot>
