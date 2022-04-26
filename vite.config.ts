@@ -4,6 +4,12 @@ import { VitePWA } from "vite-plugin-pwa";
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  server: {
+    port: 9000,
+  },
+  build: {
+    outDir: "docs",
+  },
   plugins: [
     vue(),
     VitePWA({

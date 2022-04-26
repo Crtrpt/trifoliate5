@@ -39,8 +39,8 @@ import { createI18n } from "vue-i18n";
 
 import messages from "./i18n/message.js";
 import tooltip from "./directive/tooltip";
-import installAntv from "./integrated/antv/antv";
-import installElementPlus from "./integrated/elementPlus/elementPlus";
+// import installAntv from "./integrated/antv/antv";
+// import installElementPlus from "./integrated/elementPlus/elementPlus";
 
 library.add(
   faUserSecret,
@@ -111,8 +111,8 @@ componentsList.forEach((component) => {
   app.component(component.name, component);
 });
 
-installAntv(app);
+// installAntv(app);
 
-installElementPlus(app);
+// installElementPlus(app);
 
 app.mount("#app");
