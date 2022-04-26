@@ -14,7 +14,7 @@
       "
     >
       Trifoliate5
-      <div class="text-xs px-2 mx-2 bg-gray-400 text-white rounded-full">
+      <div class="text-xs px-2 mx-1 bg-gray-400 text-white rounded-full">
         v{{ Version }}
       </div>
     </a>

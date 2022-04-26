@@ -12,6 +12,12 @@
         width: '300px',
       }"
     >
+      <div class="text-xs px-2 mx-1 bg-gray-400 text-white rounded-full">
+        {{ date }}
+      </div>
+      <div class="text-xs px-2 mx-1 bg-gray-400 text-white rounded-full">
+        {{ lastCommit }}
+      </div>
       <font-awesome-icon
         class="cursor-pointer px-2 text-gray-600"
         icon="keyboard"
@@ -24,6 +30,7 @@
 import { defineComponent } from "vue";
 import { mapGetters } from "vuex";
 import pack from "../../package.json";
+import sign from "../sign.json";
 
 console.log(pack.version);
 console.log(pack.repository);
@@ -41,6 +48,7 @@ export default defineComponent({
     return {
       Href: pack.repository,
       Version: pack.version,
+      ...sign,
     };
   },
 });
