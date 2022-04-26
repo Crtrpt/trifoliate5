@@ -13,5 +13,7 @@ var cn = {
   publish: "发布",
   save: "保存",
   open: "打开",
+  name: "名称",
+  size: "尺寸",
 };
 export default cn;

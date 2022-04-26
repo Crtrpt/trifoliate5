@@ -33,6 +33,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import page from "./page.json";
+import TWorkspace from "./type/tworkspace";
 import { initRelation } from "./utils/JsonToDoc";
 
 //初始化节点之间的关系
@@ -60,11 +61,15 @@ export default defineComponent({
   mounted() {
     var payload = page;
     var hashIds = new Map();
+    var workspace = new TWorkspace();
+
     initRelation(payload, null, 1, hashIds);
+
     // console.log(payload);
     this.$store.dispatch("page/initDocument", {
       document: payload,
       hashIds: hashIds,
+      workspace: workspace,
     });
   },
 });

@@ -8,6 +8,9 @@ const page = {
     return new TPage();
   },
   getters: {
+    getWorkspace: (state: any, getters: any): TNode[] => {
+      return state.workspace;
+    },
     getDocument: (state: any, getters: any): TNode[] => {
       return state.document;
     },
@@ -25,6 +28,7 @@ const page = {
     initDocument(state: any, payload: any) {
       state.document = payload.document;
       state.hashIds = payload.hashIds;
+      state.workspace = payload.workspace;
     },
     dragoverNode(state: any, payload: any) {
       state.dragoverNode = state.hashIds.get(payload.id);

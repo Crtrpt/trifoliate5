@@ -2,10 +2,42 @@
   <div
     class="doc border shadow-sm"
     :style="{
-      width: '1024px',
-      height: '960px',
+      width: (workspace?.width || 1024) + 'px',
+      height: (workspace?.height || 800) + 'px',
     }"
   >
+    <div class="absolute -top-6 text-gray-400 flex text-xs">
+      <div
+        class="
+          border
+          px-2
+          mx-1
+          rounded-full
+          bg-gray-200
+          first:
+          ml-0
+          hover:text-gray-500 hover:bg-gray-300
+          cursor-pointer
+        "
+        v-tooltip="$t('name')"
+      >
+        {{ workspace?.name }}
+      </div>
+      <div
+        v-tooltip="$t('size')"
+        class="
+          border
+          px-2
+          mx-1
+          rounded-full
+          hover:text-gray-500 hover:bg-gray-300
+          cursor-pointer
+        "
+      >
+        {{ workspace?.width }}*{{ workspace?.height }}
+      </div>
+    </div>
+
     <template v-for="node in document" :key="node">
       <AbstractElement :context="node"></AbstractElement>
     </template>
@@ -24,6 +56,7 @@ export default defineComponent({
       document: "page/getDocument",
       selectNode: "page/getCurrentNode",
       hoverNode: "page/getHoverNode",
+      workspace: "page/getWorkspace",
     }),
   },
   components: { AbstractElement },

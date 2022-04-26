@@ -9,7 +9,7 @@
     <DocView
       ref="doc"
       :class="{
-        'pointer-events-none': mode == 'move',
+        'pointer-events-none doc_view': mode == 'move',
       }"
     ></DocView>
     <HoverView class="absolute top-0" :workspaceRef="workspaceRef" />

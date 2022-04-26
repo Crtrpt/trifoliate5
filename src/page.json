@@ -2,9 +2,8 @@
     {
         "type": "Container",
         "name": "container2",
-        "id": 2,
+        "id": 1,
         "style": {
-            "width": "400px",
             "height": "200px",
             "left": "10px",
             "top": "10px",
@@ -14,18 +13,18 @@
             "default": [
                 {
                     "type": "Text",
-                    "name": "test3",
-                    "id": 3,
+                    "name": "test2",
+                    "id": 2,
                     "props": {
-                        "content": "text3"
+                        "content": "test2"
                     }
                 },
                 {
                     "type": "Text",
-                    "name": "test4",
-                    "id": 4,
+                    "name": "test3",
+                    "id": 3,
                     "props": {
-                        "content": "text4"
+                        "content": "test3"
                     }
                 }
             ]
@@ -34,31 +33,29 @@
     {
         "type": "Container",
         "name": "container2",
-        "id": 3,
+        "id": 4,
         "style": {
-            "width": "400px",
             "height": "200px",
             "left": "100px",
             "top": "100px",
-            "position": "absolute",
             "border": "1px solid green"
         },
         "slot": {
             "default": [
                 {
                     "type": "Text",
-                    "name": "test3",
-                    "id": 3,
+                    "name": "test5",
+                    "id": 5,
                     "props": {
-                        "content": "text3"
+                        "content": "text5"
                     }
                 },
                 {
                     "type": "Text",
-                    "name": "test4",
-                    "id": 4,
+                    "name": "test6",
+                    "id": 6,
                     "props": {
-                        "content": "text4"
+                        "content": "text6"
                     }
                 }
             ]
