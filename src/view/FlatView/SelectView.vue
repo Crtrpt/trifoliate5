@@ -83,6 +83,7 @@
         class="bottom gutter absolute -bottom-1 left-1 right-1 h-2"
         @mousedown="setHandler('bottom')"
       ></div>
+      <div class="center w-full h-full" @mousedown="setHandler('center')"></div>
     </div>
 
     <div
@@ -158,6 +159,10 @@ export default defineComponent({
     },
     moveComplete() {},
     moveCallback(offset: any) {
+      if (this.handler == "center") {
+        this.style.left = parseInt(this.start.left) + offset.x + "px";
+        this.style.top = parseInt(this.start.top) + offset.y + "px";
+      }
       if (this.handler == "left") {
         this.style.left = parseInt(this.start.left) + offset.x + "px";
         this.style.width = parseInt(this.start.width) + -offset.x + "px";
