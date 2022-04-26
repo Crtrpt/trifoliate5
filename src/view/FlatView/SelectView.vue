@@ -237,7 +237,7 @@ export default defineComponent({
           // console.log( this.style);
         }
 
-        return this.$store.getters["page/getCurrentNode"];
+        return node;
       },
       set(value: any) {},
     },

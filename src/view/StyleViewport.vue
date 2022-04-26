@@ -12,7 +12,7 @@
       <div class="propList">
         <div
           v-for="(p, idx) in node.style"
-          :key="p"
+          :key="idx"
           class="flex items-center text-gray-700"
         >
           <div class="border flex grow">

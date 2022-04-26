@@ -7,9 +7,52 @@
         height="50"
       ></canvas>
     </div>
-    <div class="y_axis absolute w-8 h-full border-r hover:shadow">
-      <canvas ref="y_axis" style="width: inherit; height: inherit"></canvas>
+    <div class="y_axis absolute w-8 h-full">
+      <canvas
+        ref="y_axis"
+        width="50"
+        :height="workspace?.height + workspace?.padding * 2"
+      ></canvas>
     </div>
+
+    <div
+      v-if="selectNode != null"
+      class="
+        width_figure
+        absolute
+        border border-blue-400
+        bg-blue-200
+        h-2
+        opacity-50
+        text-center
+        transition-all
+      "
+      :style="{
+        height: '30px',
+        width: style.width,
+        left: style.left,
+      }"
+    >
+      <!-- {{ style.width }} -->
+    </div>
+
+    <div
+      v-if="selectNode != null"
+      class="
+        height_figure
+        absolute
+        border border-blue-400
+        bg-blue-200
+        w-2
+        opacity-50
+        transition-all
+      "
+      :style="{
+        width: '30px',
+        height: style.height,
+        top: style.top,
+      }"
+    ></div>
   </div>
 </template>
 
@@ -23,16 +66,42 @@ export default defineComponent({
   computed: {
     ...mapGetters({
       document: "page/getDocument",
-      selectNode: "page/getCurrentNode",
       hoverNode: "page/getHoverNode",
       workspace: "page/getWorkspace",
     }),
+    selectNode: {
+      get() {
+        var node = this.$store.getters["page/getCurrentNode"];
+        if (node) {
+          var el = node.attr["el"];
+          var rect = el?.getBoundingClientRect();
+
+          var wrect = this.$parent?.$el?.getBoundingClientRect();
+          // console.log(rect);
+          this.style.width = parseInt(rect.width) + "px";
+          this.style.height = parseInt(rect.height) + "px";
+          this.style.top = rect.top - wrect.top + "px";
+          this.style.left = rect.left - wrect.left + "px";
+          // this.position = node.style.position;
+          // console.log( this.style);
+        }
+
+        return node;
+      },
+      set(value: any) {},
+    },
   },
   data() {
     return {
       xCtx: null,
       yCtx: null,
       gap: 100,
+      style: {
+        width: "0px",
+        height: "0px",
+        top: "0px",
+        left: "0px",
+      },
     };
   },
   watch: {
@@ -41,38 +110,58 @@ export default defineComponent({
       handler(n, o) {
         nextTick(() => {
           this.renderX();
+          this.renderY();
         });
-        this.renderY();
       },
     },
   },
   methods: {
     renderX() {
-      console.log(this.workspace);
       var start = -this.workspace?.padding;
       var end = this.workspace?.padding * 2 + this.workspace?.width;
       var ctx = this.xCtx;
       ctx.lineWidth = 0.1;
-      range(-80, 1024 + 80 * 2, 10).forEach((i) => {
-        console.log(i);
+      range(-start, end, 10).forEach((i) => {
+        // console.log(i);
         ctx.beginPath();
-        ctx.moveTo(i + 80, 0);
+        ctx.moveTo(i, 0);
         if (i % 100 == 0) {
-          ctx.lineTo(i + 80, 15);
-          ctx.fillText(i - 100, i - 10, 25);
-          //   ctx.strokeStyle = "#ffffff";
+          ctx.lineTo(i, 15);
+          ctx.fillText(i, i - 10, 25);
         } else if (i % 50 == 0) {
-          ctx.lineTo(i + 80, 10);
-          //   ctx.fillText(i, i - 10, 20);
+          ctx.lineTo(i, 10);
         } else {
-          //   ctx.strokeStyle = "#ff0000";
-          ctx.lineTo(i + 80, 5);
+          ctx.lineTo(i, 5);
         }
 
         ctx.stroke();
       });
     },
-    renderY() {},
+    renderY() {
+      var start = -this.workspace?.padding;
+      var end = this.workspace?.padding * 2 + this.workspace?.height;
+      var ctx = this.yCtx;
+      ctx.lineWidth = 0.1;
+      range(-start, end, 10).forEach((i) => {
+        // console.log(i);
+        ctx.beginPath();
+        ctx.moveTo(0, i);
+        if (i % 100 == 0) {
+          ctx.lineTo(15, i);
+          ctx.fillText(i, 18, i + 4);
+          //   ctx.strokeStyle = "#ffffff";
+        } else if (i % 50 == 0) {
+          ctx.lineTo(10, i);
+          ctx.fillText(i, 18, i + 4);
+          //   ctx.fillText(i, i - 10, 20);
+        } else {
+          ctx.lineTo(5, i);
+          //   ctx.strokeStyle = "#ff0000";
+        }
+
+        ctx.stroke();
+      });
+    },
   },
   mounted() {
     this.xCtx = this.$refs.x_axis.getContext("2d");
