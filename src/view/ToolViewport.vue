@@ -1,7 +1,7 @@
 <template>
   <div class="flex hover:shadow bg-gray-100 border-b border-gray-200">
     <a
-      :href="Href"
+      :href="repository"
       class="
         text-2xl
         p-3
@@ -15,7 +15,7 @@
     >
       Trifoliate5
       <div class="text-xs px-2 mx-1 bg-gray-400 text-white rounded-full">
-        v{{ Version }}
+        v{{ version }}
       </div>
     </a>
     <div class="flex grow border-r">
@@ -96,17 +96,14 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import { mapGetters } from "vuex";
-import pack from "../../package.json";
+import sign from "../sign.json";
 
-console.log(pack.version);
-console.log(pack.repository);
 export default defineComponent({
   name: "ToolViewport",
   computed: {},
   data() {
     return {
-      Href: pack.repository,
-      Version: pack.version,
+      ...sign,
     };
   },
 });

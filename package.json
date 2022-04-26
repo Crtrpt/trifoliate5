@@ -5,8 +5,8 @@
   "repository": "https://github.com/Crtrpt/trifoliate5",
   "scripts": {
     "dev": "vite",
-    "pre": "node script/pre.js",
-    "build": "node script/pre.js && vite build",
+    "pre": "node script/pre.mjs",
+    "build": "node script/pre.mjs && vite build",
     "build_emit": "vue-tsc --noEmit && vite build",
     "preview": "vite preview",
     "test": "jest",

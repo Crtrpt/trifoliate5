@@ -29,11 +29,8 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import { mapGetters } from "vuex";
-import pack from "../../package.json";
 import sign from "../sign.json";
 
-console.log(pack.version);
-console.log(pack.repository);
 export default defineComponent({
   name: "StatusViewport",
   computed: {
@@ -46,8 +43,6 @@ export default defineComponent({
   },
   data() {
     return {
-      Href: pack.repository,
-      Version: pack.version,
       ...sign,
     };
   },
