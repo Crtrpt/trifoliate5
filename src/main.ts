@@ -7,6 +7,8 @@ import "./index.css";
 import "./assets/main.css";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
+
+import { createRouter, createWebHashHistory } from "vue-router";
 import {
   faUserSecret,
   faChevronLeft,
@@ -32,6 +34,7 @@ import {
   faSave,
   faFolderOpen,
   faKeyboard,
+  faFlag,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
@@ -39,6 +42,8 @@ import { createI18n } from "vue-i18n";
 
 import messages from "./i18n/message.js";
 import tooltip from "./directive/tooltip";
+
+// import headlessui from "@headlessui/vue";
 // import installAntv from "./integrated/antv/antv";
 // import installElementPlus from "./integrated/elementPlus/elementPlus";
 
@@ -67,11 +72,12 @@ library.add(
   faSave,
   faFolderOpen,
   faKeyboard,
-  faChevronRight
+  faChevronRight,
+  faFlag
 );
 
 const i18n = createI18n({
-  locale: "cn",
+  locale: "en",
   fallbackLocale: "en",
   messages,
 });
@@ -102,6 +108,12 @@ var app = createApp(Trifoliate5);
 
 app.use(store);
 app.use(i18n);
+
+const router = createRouter({
+  routes: [],
+  history: createWebHashHistory(),
+});
+app.use(router);
 
 app.directive("tooltip", tooltip);
 

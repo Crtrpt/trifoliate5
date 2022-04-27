@@ -32,9 +32,7 @@
         width: style.width,
         left: style.left,
       }"
-    >
-      <!-- {{ style.width }} -->
-    </div>
+    ></div>
 
     <div
       v-if="selectNode != null"
@@ -72,6 +70,7 @@ export default defineComponent({
     selectNode: {
       get() {
         var node = this.$store.getters["page/getCurrentNode"];
+        console.log("==================================");
         if (node) {
           var el = node.attr["el"];
           var rect = el?.getBoundingClientRect();
@@ -105,6 +104,21 @@ export default defineComponent({
     };
   },
   watch: {
+    selectNode: {
+      deep: true,
+      handler(n, o) {
+        setTimeout(() => {
+          var el = n.attr["el"];
+          var rect = el?.getBoundingClientRect();
+          var wrect = this.$parent?.$el?.getBoundingClientRect();
+          // console.log(rect);
+          this.style.width = parseInt(rect.width) + "px";
+          this.style.height = parseInt(rect.height) + "px";
+          this.style.top = rect.top - wrect.top + "px";
+          this.style.left = rect.left - wrect.left + "px";
+        }, 500);
+      },
+    },
     workspace: {
       deep: true,
       handler(n, o) {
