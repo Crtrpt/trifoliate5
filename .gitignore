@@ -25,5 +25,5 @@ dist-ssr
 
 coverage/*
 
-docs/*
+
 ./src/sign.json
