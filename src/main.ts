@@ -34,6 +34,7 @@ import {
   faSave,
   faFolderOpen,
   faKeyboard,
+  faFlag,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
@@ -71,11 +72,12 @@ library.add(
   faSave,
   faFolderOpen,
   faKeyboard,
-  faChevronRight
+  faChevronRight,
+  faFlag
 );
 
 const i18n = createI18n({
-  locale: "cn",
+  locale: "en",
   fallbackLocale: "en",
   messages,
 });

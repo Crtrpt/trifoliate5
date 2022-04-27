@@ -3,7 +3,15 @@
   <Teleport to="body">
     <div
       v-if="display"
-      class="overlay w-full h-full flex justify-center bg-black bg-opacity-60"
+      class="
+        overlay
+        w-full
+        h-full
+        flex
+        justify-center
+        bg-black bg-opacity-60
+        transition-all
+      "
       @click="setDisplay(false)"
     >
       <div

@@ -87,20 +87,18 @@
       :style="{
         width: '300px',
       }"
-    >
-      <div>En/Cn</div>
-    </div>
+    ></div>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { mapGetters } from "vuex";
 import sign from "../sign.json";
 
 export default defineComponent({
   name: "ToolViewport",
   computed: {},
+
   data() {
     return {
       ...sign,

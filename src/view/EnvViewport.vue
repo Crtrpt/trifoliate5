@@ -13,7 +13,7 @@
           @click="expland(query)"
         >
           <div class="grow">
-            {{ query.name }}
+            {{ $t(query.name) }}
           </div>
 
           <font-awesome-icon
@@ -61,7 +61,7 @@
           @click="expland(system)"
         >
           <div class="grow">
-            {{ system.name }}
+            {{ $t(system.name) }}
           </div>
 
           <font-awesome-icon
@@ -109,7 +109,7 @@
           @click="expland(page)"
         >
           <div class="grow">
-            {{ page.name }}
+            {{ $t(page.name) }}
           </div>
 
           <font-awesome-icon
@@ -201,7 +201,7 @@ export default defineComponent({
   data() {
     return {
       system: {
-        name: "系统变量",
+        name: "system_variable",
         expland: false,
         list: [
           {
@@ -217,7 +217,7 @@ export default defineComponent({
         ],
       },
       page: {
-        name: "页面变量",
+        name: "page_variable",
         expland: false,
         list: [
           {
@@ -228,7 +228,7 @@ export default defineComponent({
         ],
       },
       query: {
-        name: "查询变量",
+        name: "query_variable",
         expland: true,
         list: [
           {
