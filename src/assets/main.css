@@ -33,3 +33,10 @@
     visibility: hidden;
     z-index: 10000;
 }
+
+#headlessui-portal-root {
+    position: absolute;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+}

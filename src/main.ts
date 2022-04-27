@@ -41,6 +41,8 @@ import { createI18n } from "vue-i18n";
 
 import messages from "./i18n/message.js";
 import tooltip from "./directive/tooltip";
+
+// import headlessui from "@headlessui/vue";
 // import installAntv from "./integrated/antv/antv";
 // import installElementPlus from "./integrated/elementPlus/elementPlus";
 

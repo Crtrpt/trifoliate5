@@ -18,10 +18,7 @@
       <div class="text-xs px-2 mx-1 bg-gray-400 text-white rounded-full">
         {{ lastCommit }}
       </div>
-      <font-awesome-icon
-        class="cursor-pointer px-2 text-gray-600"
-        icon="keyboard"
-      />
+      <KeyboardMapping />
     </div>
   </div>
 </template>
