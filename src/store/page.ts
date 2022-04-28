@@ -37,6 +37,43 @@ const page = {
       //取消放置
       state.dragoverNode = null;
     },
+    setAttrToggle(state: any, payload: any) {
+      var node = state.hashIds.get(payload.data.id);
+      var oldVal = node.attr.get(payload.attrName);
+      console.log(oldVal);
+      node.attr.set(payload.attrName, !oldVal);
+    },
+    //删除节点
+    removeNode(state: TPage, payload: any) {
+      console.log("remove" + payload.id);
+      if (state?.hoverNode?.id == payload.id) {
+        state.hoverNode = undefined;
+      }
+      if (state?.currentNode?.id == payload.id) {
+        state.currentNode = undefined;
+      }
+      var idx = payload.attr.get("index");
+      var parentList = [];
+      if (payload.parent == null) {
+        parentList = state!.document!;
+        parentList = [
+          ...parentList?.slice(0, idx),
+          ...parentList?.slice(idx + 1, parentList.length),
+        ];
+        state.document = parentList;
+      } else {
+        var slot = payload.attr.get("slot");
+        parentList = payload.parent.slot[slot];
+
+        parentList = [
+          ...parentList.slice(0, idx),
+          ...parentList.slice(idx + 1, parentList.length),
+        ];
+        payload.parent.slot[slot] = parentList;
+      }
+
+      state.hashIds?.delete(payload.id);
+    },
     hoverNode(state: any, payload: any) {
       state.hoverNode = state.hashIds.get(payload.id);
     },
@@ -73,6 +110,18 @@ const page = {
       root: false,
       handler(namespacedContext: any, payload: any) {
         namespacedContext.commit("initDocument", payload);
+      },
+    },
+    setAttrToggle: {
+      root: false,
+      handler(namespacedContext: any, payload: any) {
+        namespacedContext.commit("setAttrToggle", payload);
+      },
+    },
+    removeNode: {
+      root: false,
+      handler(namespacedContext: any, payload: any) {
+        namespacedContext.commit("removeNode", payload);
       },
     },
     selectNode: {

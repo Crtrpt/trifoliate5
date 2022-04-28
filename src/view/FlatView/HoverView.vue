@@ -1,6 +1,10 @@
 <template>
   <div
-    v-if="hoverNode != null && selectNode?.id != hoverNode?.id"
+    v-if="
+      hoverNode != null &&
+      selectNode?.id != hoverNode?.id &&
+      hoverNode.attr.get('eye')
+    "
     :style="style"
     class="border border-dashed select-none pointer-events-none shadow"
   >

@@ -13,6 +13,7 @@
     @dragleave="dragleave($event)"
     @dragover="dragover($event)"
     @drag="drag($event)"
+    v-if="context.attr.get('eye')"
   >
     <template v-if="context.content">
       {{ context.content }}
