@@ -6,6 +6,8 @@
       !selectNode.attr.get('lock')
     "
     :style="style"
+    @drop="drop($event, selectNode)"
+    @dragover="dragover($event)"
   >
     <div
       class="
@@ -133,6 +135,12 @@
       <font-awesome-icon
         class="cursor-pointer px-1 hover:text-blue-600"
         icon="copy"
+        @click="copyNode($event)"
+      />
+      <font-awesome-icon
+        class="cursor-pointer px-1 hover:text-blue-600"
+        icon="trash"
+        @click="removeNode($event)"
       />
     </div>
     <div
@@ -208,10 +216,11 @@
 </template>
 
 <script lang="ts">
-import { th } from "element-plus/lib/locale";
 import { defineComponent } from "vue";
+import DragNodeMixin from "../../behavior/dragNode";
 
 export default defineComponent({
+  mixins: [DragNodeMixin],
   name: "SelectView",
   props: {
     workspaceRef: Object,
@@ -274,6 +283,16 @@ export default defineComponent({
     },
     dbclick(e: Event) {
       this.$store.dispatch("page/cancelSelectNode", {});
+      e.stopPropagation();
+    },
+    copyNode(e: Event) {
+      this.$store.dispatch("page/copyNode", this.selectNode).then(() => {
+        this.$store.dispatch("page/selectNode", {});
+      });
+      e.stopPropagation();
+    },
+    removeNode(e: Event) {
+      this.$store.dispatch("page/removeNode", this.selectNode);
       e.stopPropagation();
     },
   },

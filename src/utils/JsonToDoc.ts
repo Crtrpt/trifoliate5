@@ -6,7 +6,8 @@ export function initRelation(
   parent: any,
   level: number,
   hashIds: Map<string, any>,
-  slotName: string
+  slotName: string,
+  maxId: number
 ) {
   node.forEach((n: any, idx: number) => {
     n.parent = parent;
@@ -17,12 +18,15 @@ export function initRelation(
     n.attr.set("trash", true);
     n.attr.set("index", idx);
     n.attr.set("slot", slotName);
+    if (n.id > maxId) {
+      maxId = n.id;
+    }
     // console.log(node);
     hashIds.set(n.id, n);
     for (const key in n.slot) {
       var slot = n.slot[key];
       console.log(key);
-      initRelation(slot, n, level + 1, hashIds, key);
+      initRelation(slot, n, level + 1, hashIds, key, maxId);
     }
     n as TNode;
   });

@@ -98,7 +98,7 @@ export default defineComponent({
     selectNode: {
       get() {
         var node = this.$store.getters["page/getCurrentNode"];
-        console.log("==================================");
+        // console.log("==================================");
         if (node) {
           var el = node.attr["el"];
           var rect = el?.getBoundingClientRect();

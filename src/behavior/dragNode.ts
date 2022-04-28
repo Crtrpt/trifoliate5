@@ -5,28 +5,49 @@ const DragNodeMixin = {
     };
   },
   methods: {
-    drop(e: Event) {
-      console.log("放下");
-      this.$store.dispatch("page/cancelDragoverNode", this.context);
+    drop(e: DragEvent, parent: any) {
+      var tdstr = e.dataTransfer?.getData("Text");
+      if (!tdstr) {
+        return;
+      }
+      var td = JSON.parse(tdstr);
+      this.$store
+        .dispatch("page/addNode", {
+          parent: parent,
+          ...td,
+        })
+        .then(() => {
+          this.$store.dispatch("page/selectNode", {});
+        });
+
+      this.isDrag = false;
+      this.$store.dispatch("page/cancelDragoverNode", parent);
       e.stopPropagation();
     },
-    drag(e: Event) {
-      console.log("drag");
+    dragstart(e: DragEvent, payload: any) {
+      this["nodeList/setCurNode"](payload);
+      e.dataTransfer?.setData(
+        "Text",
+        JSON.stringify({
+          action: "add",
+          content: payload,
+        })
+      );
+    },
+    drag(e: DragEvent) {
       e.stopPropagation();
     },
-    dragenter(e: Event) {
+    dragenter(e: DragEvent) {
       this.isDrag = true;
       this.$store.dispatch("page/dragoverNode", this.context);
-      console.log("enter");
       e.stopPropagation();
     },
-    dragleave(e: Event) {
+    dragleave(e: DragEvent) {
       this.isDrag = false;
       this.$store.dispatch("page/cancelDragoverNode", this.context);
-      console.log("leave");
       e.stopPropagation();
     },
-    dragover(e: Event) {
+    dragover(e: DragEvent) {
       this.$store.dispatch("page/dragoverNode", this.context);
       e.preventDefault();
       e.stopPropagation();

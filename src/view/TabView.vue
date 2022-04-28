@@ -49,7 +49,7 @@ export default defineComponent({
     },
   },
   created() {
-    console.log(this.$slots.default);
+    // console.log(this.$slots.default);
   },
 });
 </script>

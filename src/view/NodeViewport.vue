@@ -23,8 +23,12 @@
             v-for="i in g.list"
             v-bind:key="i.name"
             class="border p-4 cursor-pointer hover:bg-gray-200"
-            @dragstart="dragstart"
+            :class="{
+              'bg-gray-200': curNode?.name == i?.name || false,
+            }"
+            @dragstart="dragstart($event, i)"
             draggable="true"
+            @click="click($event, i)"
           >
             {{ i.name }}
           </div>
@@ -36,49 +40,26 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import { mapGetters, mapMutations } from "vuex";
+import DragNodeMixin from "../behavior/dragNode";
 
 export default defineComponent({
   name: "NodeViewport",
+  mixins: [DragNodeMixin],
+  computed: {
+    ...mapGetters({
+      group: "nodeList/getNodeList",
+      curNode: "nodeList/getCurNode",
+    }),
+  },
   methods: {
+    click(e: Event, i: any) {
+      this["nodeList/setCurNode"](i);
+    },
+    ...mapMutations(["nodeList/setCurNode"]),
     expland(e: any) {
       e.expland = !e.expland;
     },
-    dragstart(e: Event) {
-      console.log("drag");
-    },
-  },
-  data() {
-    return {
-      group: [
-        {
-          name: "基础",
-          expland: true,
-          list: [
-            {
-              name: "Node",
-            },
-            {
-              name: "Container",
-            },
-            {
-              name: "NameSlot",
-            },
-            {
-              name: "Tab",
-            },
-          ],
-        },
-        {
-          name: "测试",
-          expland: true,
-          list: [
-            {
-              name: "text",
-            },
-          ],
-        },
-      ],
-    };
   },
 });
 </script>

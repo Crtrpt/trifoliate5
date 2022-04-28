@@ -29,9 +29,10 @@
         v-if="!data.slot"
       />
       <div class="grow flex items-center">
-        <div>{{ data?.name }}</div>
+        <div v-tooltip="data.id">{{ data?.name }}</div>
+
         <div class="bg-gray-400 px-1 mx-0.5 text-xs rounded-full text-white">
-          {{ data?.attr.get("index") + 999 }}
+          {{ data?.attr.get("index") }}
         </div>
         <div class="bg-gray-400 px-1 mx-0.5 text-xs rounded-full text-white">
           {{ data?.attr.get("slot") || "root" }}

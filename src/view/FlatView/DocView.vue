@@ -1,6 +1,10 @@
 <template>
   <div
     class="doc border shadow-sm"
+    @drop="drop($event)"
+    @dragenter="dragenter($event)"
+    @dragleave="dragleave($event)"
+    @dragover="dragover($event)"
     :style="{
       width: (workspace?.width || 1024) + 'px',
       height: (workspace?.height || 800) + 'px',
@@ -48,8 +52,10 @@
 import { defineComponent } from "vue";
 import { mapGetters } from "vuex";
 import AbstractElement from "../../abstract/AbstractElement.vue";
+import DragNodeMixin from "../../behavior/dragNode";
 
 export default defineComponent({
+  mixins: [DragNodeMixin],
   name: "DocView",
   computed: {
     ...mapGetters({
