@@ -6,6 +6,7 @@
     class="text-sm"
     @click="click($event)"
     @mouseenter="mouseenter($event)"
+    draggable="true"
   >
     <div
       class="
@@ -19,19 +20,49 @@
     >
       <font-awesome-icon
         v-if="data.slot"
-        class="cursor-pointer px-2 text-gray-400"
+        class="cursor-pointer px-2 text-gray-400 w-2 h-2"
         :icon="expland ? 'chevron-down' : 'chevron-right'"
       />
       <font-awesome-icon
-        class="cursor-pointer px-2 text-gray-400"
+        class="cursor-pointer px-2 text-gray-400 w-2 h-2"
         icon="cube"
         v-if="!data.slot"
       />
-      <div class="grow">{{ data?.name }}</div>
-      <div class="p-1 flex shrink-1 text-xs text-gray-800">
-        <font-awesome-icon class="cursor-pointer px-1" icon="eye" />
-        <font-awesome-icon class="cursor-pointer px-1" icon="lock-open" />
-        <font-awesome-icon class="cursor-pointer px-1" icon="trash" />
+      <div class="grow flex items-center">
+        <div v-tooltip="data.id">{{ data?.name }}</div>
+
+        <div class="bg-gray-400 px-1 mx-0.5 text-xs rounded-full text-white">
+          {{ data?.attr.get("index") }}
+        </div>
+        <div class="bg-gray-400 px-1 mx-0.5 text-xs rounded-full text-white">
+          {{ data?.attr.get("slot") || "root" }}
+        </div>
+      </div>
+
+      <div class="p-1 flex shrink-1 text-xs text-gray-400">
+        <font-awesome-icon
+          class="cursor-pointer px-1 hover:text-blue-400"
+          icon="arrow-up"
+        />
+        <font-awesome-icon
+          class="cursor-pointer px-1 hover:text-blue-500"
+          icon="arrow-down"
+        />
+        <font-awesome-icon
+          class="cursor-pointer px-1 hover:text-blue-500"
+          :icon="data.attr.get('eye') ? 'eye' : 'eye-slash'"
+          @click="setAttrToggle($event, 'eye')"
+        />
+        <font-awesome-icon
+          class="cursor-pointer px-1 hover:text-blue-500"
+          :icon="!data.attr.get('lock') ? 'unlock' : 'lock'"
+          @click="setAttrToggle($event, 'lock')"
+        />
+        <font-awesome-icon
+          class="cursor-pointer px-1 hover:text-blue-500"
+          icon="trash"
+          @click="removeNode($event)"
+        />
       </div>
     </div>
     <template v-if="expland">
@@ -71,6 +102,17 @@ export default defineComponent({
     };
   },
   methods: {
+    setAttrToggle(e: Event, attrName: String) {
+      this.$store.dispatch("page/setAttrToggle", {
+        data: this.data,
+        attrName: attrName,
+      });
+      e.stopPropagation();
+    },
+    removeNode(e: Event) {
+      this.$store.dispatch("page/removeNode", this.data);
+      e.stopPropagation();
+    },
     mouseenter(e: Event) {
       this.$store.dispatch("page/hoverNode", this.data);
       e.stopPropagation();

@@ -1,5 +1,7 @@
+import { nextTick } from "vue";
 import { TPage } from "../type/page";
 import TNode from "../type/tnode";
+import { initNode } from "../utils/initNode";
 import { DocumentSave, initRelation } from "../utils/JsonToDoc";
 
 const page = {
@@ -29,13 +31,83 @@ const page = {
       state.document = payload.document;
       state.hashIds = payload.hashIds;
       state.workspace = payload.workspace;
+      state.maxId = payload.maxId;
     },
     dragoverNode(state: any, payload: any) {
-      state.dragoverNode = state.hashIds.get(payload.id);
+      state.dragoverNode = state.hashIds.get(payload?.id);
     },
     cancelDragoverNode(state: any, payload: any) {
       //取消放置
       state.dragoverNode = null;
+    },
+    setAttrToggle(state: any, payload: any) {
+      var node = state.hashIds.get(payload.data.id);
+      var oldVal = node.attr.get(payload.attrName);
+      console.log(oldVal);
+      node.attr.set(payload.attrName, !oldVal);
+    },
+    //增加节点
+    addNode(state: any, payload: any) {
+      if (payload.action == "add") {
+        var node = new TNode(payload.node);
+        node.id = state.getMaxId();
+        node.parent = payload.parent;
+        node.level = (node?.parent?.level || 0) + 1;
+        node.attr!.set(
+          "index",
+          payload.index || payload?.parent?.length || state.document.length || 0
+        );
+        state.hashIds.set(node.id!, node);
+        if (payload.parent == null) {
+          state.document.push(node);
+        } else {
+          payload.parent.slot["default"].push(node);
+        }
+      }
+      return state;
+    },
+    copyNode(state: any, payload: any) {
+      console.log(payload);
+      var node = new TNode(payload);
+      node.parent = payload.parent;
+      node.id = state.getMaxId();
+      state.hashIds.set(node.id!, node);
+      if (payload.parent == null) {
+        state.document.push(node);
+      } else {
+        payload.parent.slot["default"].push(node);
+      }
+    },
+    //删除节点
+    removeNode(state: TPage, payload: any) {
+      console.log("remove" + payload.id);
+      if (state?.hoverNode?.id == payload.id) {
+        state.hoverNode = undefined;
+      }
+      if (state?.currentNode?.id == payload.id) {
+        state.currentNode = undefined;
+      }
+      var idx = payload.attr.get("index");
+      var parentList = [];
+      if (payload.parent == null) {
+        parentList = state!.document!;
+        parentList = [
+          ...parentList?.slice(0, idx),
+          ...parentList?.slice(idx + 1, parentList.length),
+        ];
+        state.document = parentList;
+      } else {
+        var slot = payload.attr.get("slot");
+        parentList = payload.parent.slot[slot];
+
+        parentList = [
+          ...parentList.slice(0, idx),
+          ...parentList.slice(idx + 1, parentList.length),
+        ];
+        payload.parent.slot[slot] = parentList;
+      }
+
+      state.hashIds?.delete(payload.id);
     },
     hoverNode(state: any, payload: any) {
       state.hoverNode = state.hashIds.get(payload.id);
@@ -45,7 +117,7 @@ const page = {
       state.hoverNode = null;
     },
     selectNode(state: any, payload: any) {
-      state.currentNode = state.hashIds.get(payload.id);
+      state.currentNode = state.hashIds.get(payload.id || state.maxId);
     },
     bindEl(state: any, payload: any) {
       state.hashIds.set(payload.id, payload);
@@ -73,6 +145,36 @@ const page = {
       root: false,
       handler(namespacedContext: any, payload: any) {
         namespacedContext.commit("initDocument", payload);
+      },
+    },
+    setAttrToggle: {
+      root: false,
+      handler(namespacedContext: any, payload: any) {
+        namespacedContext.commit("setAttrToggle", payload);
+      },
+    },
+    addNode: {
+      root: false,
+      handler(namespacedContext: any, payload: any) {
+        console.log(namespacedContext.rootGetters);
+        var node = namespacedContext.rootGetters["nodeList/getCurNode"];
+        console.log(node);
+        namespacedContext.commit("addNode", {
+          ...payload,
+          node: node,
+        });
+      },
+    },
+    removeNode: {
+      root: false,
+      handler(namespacedContext: any, payload: any) {
+        namespacedContext.commit("removeNode", payload);
+      },
+    },
+    copyNode: {
+      root: false,
+      handler(namespacedContext: any, payload: any) {
+        namespacedContext.commit("copyNode", payload);
       },
     },
     selectNode: {
@@ -166,10 +268,12 @@ const page = {
 
         var payload = JSON.parse(contents);
         var hashIds = new Map();
-        initRelation(payload, null, 1, hashIds);
+        var maxId = 0;
+        initRelation(payload, null, 1, hashIds, maxId);
         namespacedContext.commit("initDocument", {
           document: payload,
           hashIds: hashIds,
+          maxId: maxId,
         });
       },
     },

@@ -2,6 +2,7 @@ var en = {
   node: "Node",
   prop: "Prop",
   event: "Event",
+  style: "Style",
   struct: "Struct",
   redo: "Redo",
   undo: "Undo",
@@ -11,7 +12,11 @@ var en = {
   query_variable: "Query Variable",
   copy: "Copy",
   cut: "Cut",
-  paste: "Paste",
+  paste: "Paster",
   publish: "Publish",
+  save: "Save",
+  open: "Open",
+  name: "Name",
+  size: "Size",
 };
 export default en;

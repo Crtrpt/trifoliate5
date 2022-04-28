@@ -9,4 +9,9 @@ export class TPage {
   dragoverNode?: TNode;
   hashIds?: Map<string, TNode>;
   workspace?: TWorkspace;
+  maxId: number = 0;
+  getMaxId() {
+    this.maxId = this.maxId + 1;
+    return this.maxId;
+  }
 }

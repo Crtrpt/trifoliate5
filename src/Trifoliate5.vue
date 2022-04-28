@@ -19,7 +19,7 @@
         <TabView class="shrink-1 h-1/2 overflow-auto" :data="right"></TabView>
       </div>
     </div>
-    <StatusViewport />
+    <StatusViewport class="shrink" />
   </div>
 </template>
 
@@ -62,14 +62,16 @@ export default defineComponent({
     var payload = page;
     var hashIds = new Map();
     var workspace = new TWorkspace();
+    var maxId = 0;
 
-    initRelation(payload, null, 1, hashIds);
+    initRelation(payload, null, 1, hashIds, null, maxId);
 
     // console.log(payload);
     this.$store.dispatch("page/initDocument", {
       document: payload,
       hashIds: hashIds,
       workspace: workspace,
+      maxId: maxId,
     });
   },
 });

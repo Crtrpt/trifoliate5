@@ -1,5 +1,14 @@
 <template>
-  <div v-if="selectNode != null" :style="style">
+  <div
+    v-if="
+      selectNode != null &&
+      selectNode.attr.get('eye') &&
+      !selectNode.attr.get('lock')
+    "
+    :style="style"
+    @drop="drop($event, selectNode)"
+    @dragover="dragover($event)"
+  >
     <div
       class="
         w-full
@@ -106,6 +115,70 @@
     >
       {{ selectNode.name }}
     </div>
+    <div
+      class="
+        name
+        border border-blue-500
+        cursor-pointer
+        text-gray-500
+        absolute
+        right-0
+        -top-7
+        rounded-full
+        px-3
+        py-0.5
+        text-xs
+        overflow-visible
+        whitespace-nowrap
+      "
+    >
+      <font-awesome-icon
+        class="cursor-pointer px-1 hover:text-blue-600"
+        icon="copy"
+        @click="copyNode($event)"
+      />
+      <font-awesome-icon
+        class="cursor-pointer px-1 hover:text-blue-600"
+        icon="trash"
+        @click="removeNode($event)"
+      />
+    </div>
+    <div
+      class="
+        name
+        border border-blue-500
+        cursor-pointer
+        text-gray-500
+        absolute
+        -right-7
+        top-0
+        rounded-full
+        py-1
+        px-0.5
+        text-xs
+        overflow-visible
+        whitespace-nowrap
+        flex flex-col
+        w-6
+      "
+    >
+      <font-awesome-icon
+        class="cursor-pointer p-1 hover:text-blue-600"
+        icon="arrows-up-to-line"
+      />
+      <font-awesome-icon
+        class="cursor-pointer p-1 hover:text-blue-600"
+        icon="arrow-up"
+      />
+      <font-awesome-icon
+        class="cursor-pointer p-1 hover:text-blue-600"
+        icon="arrow-down"
+      />
+      <font-awesome-icon
+        class="cursor-pointer p-1 hover:text-blue-600"
+        icon="arrows-down-to-line"
+      />
+    </div>
 
     <div
       v-if="parseInt(style.height) > 30"
@@ -143,10 +216,11 @@
 </template>
 
 <script lang="ts">
-import { th } from "element-plus/lib/locale";
 import { defineComponent } from "vue";
+import DragNodeMixin from "../../behavior/dragNode";
 
 export default defineComponent({
+  mixins: [DragNodeMixin],
   name: "SelectView",
   props: {
     workspaceRef: Object,
@@ -209,6 +283,16 @@ export default defineComponent({
     },
     dbclick(e: Event) {
       this.$store.dispatch("page/cancelSelectNode", {});
+      e.stopPropagation();
+    },
+    copyNode(e: Event) {
+      this.$store.dispatch("page/copyNode", this.selectNode).then(() => {
+        this.$store.dispatch("page/selectNode", {});
+      });
+      e.stopPropagation();
+    },
+    removeNode(e: Event) {
+      this.$store.dispatch("page/removeNode", this.selectNode);
       e.stopPropagation();
     },
   },

@@ -46,8 +46,10 @@ export default defineComponent({
       var end2 = this.workspace?.padding + this.workspace?.height;
       var ctx = this.ctx;
       ctx.lineWidth = 0.1;
+
+      ctx.strokeStyle = "#000000";
       range(-start, end, 100).forEach((i) => {
-        console.log(i);
+        // console.log(i);
         ctx.beginPath();
         ctx.moveTo(i, this.workspace?.padding);
         ctx.lineTo(i, end2);
