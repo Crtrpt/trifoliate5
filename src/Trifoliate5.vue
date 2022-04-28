@@ -19,7 +19,7 @@
         <TabView class="shrink-1 h-1/2 overflow-auto" :data="right"></TabView>
       </div>
     </div>
-    <StatusViewport />
+    <StatusViewport class="shrink" />
   </div>
 </template>
 

@@ -20,11 +20,11 @@
     >
       <font-awesome-icon
         v-if="data.slot"
-        class="cursor-pointer px-2 text-gray-400 w-2"
+        class="cursor-pointer px-2 text-gray-400 w-2 h-2"
         :icon="expland ? 'chevron-down' : 'chevron-right'"
       />
       <font-awesome-icon
-        class="cursor-pointer px-2 text-gray-400"
+        class="cursor-pointer px-2 text-gray-400 w-2 h-2"
         icon="cube"
         v-if="!data.slot"
       />
