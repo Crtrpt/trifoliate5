@@ -316,7 +316,7 @@ export default defineComponent({
       get() {
         var node = this.$store.getters["page/getCurrentNode"];
         if (node) {
-          var el = node.attr["el"];
+          var el = node.attr.get("el");
           var rect = el?.getBoundingClientRect();
           var wrect = this.workspaceRef?.getBoundingClientRect();
           // console.log(rect);

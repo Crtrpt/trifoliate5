@@ -34,6 +34,26 @@ const nodeList = {
           ],
         },
         {
+          name: "layout",
+          expland: true,
+          list: [
+            {
+              name: "Row",
+              type: "Container",
+              id: "7",
+              style: {
+                height: "100px",
+                width: "100%",
+                display: "flex",
+              },
+              props: {},
+              slot: {
+                default: [],
+              },
+            },
+          ],
+        },
+        {
           name: "test",
           expland: true,
           list: [
@@ -42,8 +62,8 @@ const nodeList = {
               type: "Chartjs",
               id: "6",
               style: {
-                height: "200px",
-                width: "400px",
+                height: "100%",
+                width: "25%",
               },
               props: {
                 type: "line",
