@@ -97,24 +97,25 @@
 
     <div
       class="
+        absolute
+        -top-7
+        overflow-visible
+        whitespace-nowrap
         name
         border border-blue-500
         bg-blue-500
         hover:bg-blue-600
         cursor-pointer
         text-white
-        absolute
-        -top-7
         rounded-full
         px-3
         py-0.5
         text-xs
-        overflow-visible
-        whitespace-nowrap
       "
     >
       {{ selectNode.name }}
     </div>
+
     <div
       class="
         name
@@ -143,6 +144,7 @@
         @click="removeNode($event)"
       />
     </div>
+
     <div
       class="
         name
@@ -314,7 +316,7 @@ export default defineComponent({
       get() {
         var node = this.$store.getters["page/getCurrentNode"];
         if (node) {
-          var el = node.attr["el"];
+          var el = node.attr.get("el");
           var rect = el?.getBoundingClientRect();
           var wrect = this.workspaceRef?.getBoundingClientRect();
           // console.log(rect);

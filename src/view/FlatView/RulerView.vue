@@ -100,7 +100,7 @@ export default defineComponent({
         var node = this.$store.getters["page/getCurrentNode"];
         // console.log("==================================");
         if (node) {
-          var el = node.attr["el"];
+          var el = node.attr.get("el");
           var rect = el?.getBoundingClientRect();
 
           var wrect = this.$parent?.$el?.getBoundingClientRect();
@@ -136,7 +136,7 @@ export default defineComponent({
       deep: true,
       handler(n, o) {
         setTimeout(() => {
-          var el = n.attr["el"];
+          var el = n.attr.get("el");
           var rect = el?.getBoundingClientRect();
           var wrect = this.$parent?.$el?.getBoundingClientRect();
           // console.log(rect);

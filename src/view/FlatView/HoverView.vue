@@ -86,7 +86,7 @@ export default defineComponent({
       get() {
         var node = this.$store.getters["page/getHoverNode"];
         if (node) {
-          var el = node.attr["el"];
+          var el = node.attr.get("el");
           var rect = el?.getBoundingClientRect();
           var wrect = this.workspaceRef?.getBoundingClientRect();
           this.style.width = parseInt(rect.width) + "px";

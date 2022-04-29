@@ -69,7 +69,7 @@ export default defineComponent({
         // console.log("dragover============");
         // console.log(dragNode);
         if (dragNode) {
-          var el: HTMLElement = dragNode.attr["el"];
+          var el: HTMLElement = dragNode.attr.get("el");
           var rect = el?.getBoundingClientRect();
           var wrect = this.workspaceRef?.getBoundingClientRect();
 

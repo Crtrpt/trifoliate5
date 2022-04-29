@@ -31,13 +31,25 @@ const nodeList = {
                 default: [],
               },
             },
+          ],
+        },
+        {
+          name: "layout",
+          expland: true,
+          list: [
             {
-              name: "NameSlot",
-              id: "3",
-            },
-            {
-              name: "Tab",
-              id: "4",
+              name: "Row",
+              type: "Container",
+              id: "7",
+              style: {
+                height: "100px",
+                width: "100%",
+                display: "flex",
+              },
+              props: {},
+              slot: {
+                default: [],
+              },
             },
           ],
         },
@@ -46,8 +58,29 @@ const nodeList = {
           expland: true,
           list: [
             {
-              name: "text",
-              id: "5",
+              name: "chart",
+              type: "Chartjs",
+              id: "6",
+              style: {
+                height: "100%",
+                width: "25%",
+              },
+              props: {
+                type: "line",
+                config: "",
+                data: JSON.stringify({
+                  labels: ["1月", "2月", "3月", "4月", "5月", "6月"],
+                  datasets: [
+                    {
+                      label: "My First Dataset",
+                      data: [65, 59, 80, 81, 56, 55],
+                      fill: false,
+                      borderColor: "rgb(75, 192, 192)",
+                      tension: 0.1,
+                    },
+                  ],
+                }),
+              },
             },
           ],
         },

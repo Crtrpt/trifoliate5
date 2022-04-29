@@ -40,7 +40,7 @@ export default defineComponent({
     };
   },
   mounted() {
-    this.context.attr["el"] = this.$el;
+    this.context.attr.set("el", this.$el);
     this.$store.dispatch("page/bindEl", this.context);
   },
   methods: {
