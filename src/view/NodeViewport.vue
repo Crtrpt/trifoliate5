@@ -22,7 +22,7 @@
           <div
             v-for="i in g.list"
             v-bind:key="i.name"
-            class="border p-4 cursor-pointer hover:bg-gray-200"
+            class="border p-1 px-4 cursor-pointer hover:bg-gray-200"
             :class="{
               'bg-gray-200': curNode?.name == i?.name || false,
             }"
