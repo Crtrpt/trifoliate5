@@ -49,9 +49,9 @@ import ShortPath from "./propview/ShortPath.vue";
 
 export default defineComponent({
   name: "PropViewport",
-   setup() {
-    const page = pageStore()
-    return { page }
+  setup() {
+    const page = pageStore();
+    return { page };
   },
   computed: {
     node: {
@@ -72,6 +72,3 @@ export default defineComponent({
   components: { ShortPath },
 });
 </script>
-
-
-

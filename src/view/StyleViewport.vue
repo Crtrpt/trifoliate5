@@ -34,15 +34,20 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import { pageStore } from "../pinia/pageStore";
 import TNode from "../type/tnode";
 import ShortPath from "./propview/ShortPath.vue";
 
 export default defineComponent({
   name: "StyleViewport",
+  setup() {
+    const page = pageStore();
+    return { page };
+  },
   computed: {
     node: {
       get() {
-        return this.$store.getters["page/getCurrentNode"] as TNode;
+        return this.page.getCurrentNode as TNode;
       },
       set(value) {},
     },
@@ -58,6 +63,3 @@ export default defineComponent({
   components: { ShortPath },
 });
 </script>
-
-
-
