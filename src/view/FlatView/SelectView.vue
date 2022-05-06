@@ -220,8 +220,13 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import DragNodeMixin from "../../behavior/dragNode";
+import { pageStore } from "../../pinia/pageStore";
 
 export default defineComponent({
+  setup() {
+    const page = pageStore()
+    return { page }
+  },
   mixins: [DragNodeMixin],
   name: "SelectView",
   props: {
@@ -281,20 +286,19 @@ export default defineComponent({
         this.style.height = parseInt(this.start.height) + offset.y + "px";
       }
 
-      this.$store.dispatch("page/changeSelectStyle", this.style);
+      this.page.changeSelectStyle(this.style);
     },
     dbclick(e: Event) {
-      this.$store.dispatch("page/cancelSelectNode", {});
+      this.page.cancelSelectNode( {});
       e.stopPropagation();
     },
     copyNode(e: Event) {
-      this.$store.dispatch("page/copyNode", this.selectNode).then(() => {
-        this.$store.dispatch("page/selectNode", {});
-      });
+      this.page.copyNode(this.selectNode)
       e.stopPropagation();
     },
     removeNode(e: Event) {
-      this.$store.dispatch("page/removeNode", this.selectNode);
+      console.log(this.selectNode);
+      this.page.removeNode(this.selectNode);
       e.stopPropagation();
     },
   },
@@ -314,7 +318,7 @@ export default defineComponent({
   computed: {
     selectNode: {
       get() {
-        var node = this.$store.getters["page/getCurrentNode"];
+        var node = this.page.getCurrentNode;
         if (node) {
           var el = node.attr.get("el");
           var rect = el?.getBoundingClientRect();

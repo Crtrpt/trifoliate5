@@ -27,6 +27,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import DragNodeMixin from "../behavior/dragNode";
+import { pageStore } from "../pinia/pageStore";
 
 export default defineComponent({
   mixins: [DragNodeMixin],
@@ -39,21 +40,25 @@ export default defineComponent({
       slot: "default",
     };
   },
+  setup() {
+    const page = pageStore()
+    return { page }
+  },
   mounted() {
     this.context.attr.set("el", this.$el);
-    this.$store.dispatch("page/bindEl", this.context);
+    this.page.bindEl(this.context);
   },
   methods: {
     mouseenter(e: Event) {
-      this.$store.dispatch("page/hoverNode", this.context);
+      this.page.setHoverNode(this.context);
       e.stopPropagation();
     },
     mouseleave(e: Event) {
-      this.$store.dispatch("page/cancelHoverNode", this.context);
+      this.page.cancelHoverNode(this.context);
       e.stopPropagation();
     },
     click(e: Event) {
-      this.$store.dispatch("page/selectNode", this.context);
+      this.page.setSelectNode(this.context);
       e.stopPropagation();
     },
   },
@@ -62,3 +67,7 @@ export default defineComponent({
 
 
 
+
+function pageStore() {
+  throw new Error("Function not implemented.");
+}

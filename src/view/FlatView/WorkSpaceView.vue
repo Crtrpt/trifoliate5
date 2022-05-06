@@ -19,13 +19,14 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { mapGetters } from "vuex";
+import { mapGetters } from "pinia";
+import { pageStore } from "../../pinia/pageStore";
 
 export default defineComponent({
   name: "WorkSpaceView",
   computed: {
-    ...mapGetters({
-      workspace: "page/getWorkspace",
+    ...mapGetters(pageStore, {
+      workspace: "getWorkspace",
     }),
   },
 });

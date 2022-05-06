@@ -1,12 +1,14 @@
 import { createApp } from "vue";
 import Trifoliate5 from "./Trifoliate5.vue";
 
-import store from "./store";
 
 import "./index.css";
 import "./assets/main.css";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
+
+import { createPinia } from 'pinia'
+
 
 import { createRouter, createWebHashHistory } from "vue-router";
 import {
@@ -120,7 +122,6 @@ for (const idx in node) {
 
 var app = createApp(Trifoliate5);
 
-app.use(store);
 app.use(i18n);
 
 const router = createRouter({
@@ -128,6 +129,8 @@ const router = createRouter({
   history: createWebHashHistory(),
 });
 app.use(router);
+
+app.use(createPinia())
 
 app.directive("tooltip", tooltip);
 

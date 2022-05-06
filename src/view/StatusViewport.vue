@@ -1,7 +1,7 @@
 <template>
   <div class="border-t bg-gray-100 px-2 flex h-8">
     <div class="w-1/6 flex items-center">
-      <div class="text-xs px-2 mx-1 bg-gray-400 text-white rounded-full">
+      <div class="text-xs px-2 mx-1 bg-gray-400 text-white rounded-full  whitespace-nowrap overflow-hidden">
         {{ date }}
       </div>
       <div class="text-xs px-2 mx-1 bg-gray-400 text-white rounded-full">
@@ -27,16 +27,21 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { mapGetters } from "vuex";
+import { mapGetters } from "pinia";
 import sign from "../sign.json";
 import LanguageSelect from "./LanguageSelect.vue";
+import { pageStore } from "../pinia/pageStore";
 
 export default defineComponent({
   name: "StatusViewport",
+  setup() {
+    const page = pageStore()
+    return { page }
+  },
   computed: {
     node: {
       get() {
-        return this.$store.getters["page/getCurrentNode"] as TNode;
+        return this.page.getCurrentNode;
       },
       set(value) {},
     },

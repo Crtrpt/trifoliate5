@@ -13,6 +13,7 @@
     "test-c": "jest --coverage"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.1.1",
     "@fortawesome/free-regular-svg-icons": "^6.1.1",
     "@fortawesome/free-solid-svg-icons": "^6.1.1",
     "@fortawesome/vue-fontawesome": "^3.0.0-5",
@@ -23,11 +24,11 @@
     "element-plus": "^2.1.10",
     "keyboardjs": "^2.6.4",
     "nanopop": "^2.1.0",
+    "pinia": "^2.0.14",
     "qs": "^6.10.3",
     "vue": "^3.2.25",
     "vue-i18n": "^9.1.9",
-    "vue-router": "^4.0.14",
-    "vuex": "^4.0.2"
+    "vue-router": "^4.0.14"
   },
   "devDependencies": {
     "@types/d3": "^7.1.0",

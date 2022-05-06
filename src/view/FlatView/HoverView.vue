@@ -61,7 +61,8 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { mapGetters } from "vuex";
+import { mapGetters } from "pinia";
+import { pageStore } from "../../pinia/pageStore";
 
 export default defineComponent({
   name: "HoverView",
@@ -78,14 +79,18 @@ export default defineComponent({
       },
     };
   },
+  setup() {
+    const page = pageStore()
+    return { page }
+  },
   computed: {
-    ...mapGetters({
-      selectNode: "page/getCurrentNode",
+    ...mapGetters(   pageStore, {
+      selectNode: "getCurrentNode",
     }),
     hoverNode: {
       get() {
-        var node = this.$store.getters["page/getHoverNode"];
-        if (node) {
+        var node = this.page.getHoverNode;
+        if (node!= undefined) {
           var el = node.attr.get("el");
           var rect = el?.getBoundingClientRect();
           var wrect = this.workspaceRef?.getBoundingClientRect();

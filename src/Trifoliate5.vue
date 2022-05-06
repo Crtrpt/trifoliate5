@@ -33,6 +33,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import page from "./page.json";
+import { pageStore } from "./pinia/pageStore";
 import TWorkspace from "./type/tworkspace";
 import { initRelation } from "./utils/JsonToDoc";
 
@@ -40,6 +41,10 @@ import { initRelation } from "./utils/JsonToDoc";
 
 export default defineComponent({
   name: "Trifoliate5",
+  setup() {
+    const page = pageStore()
+    return { page }
+  },
   data() {
     return {
       right: [
@@ -67,7 +72,7 @@ export default defineComponent({
     initRelation(payload, null, 1, hashIds, null, maxId);
 
     // console.log(payload);
-    this.$store.dispatch("page/initDocument", {
+    this.page.initDocument({
       document: payload,
       hashIds: hashIds,
       workspace: workspace,

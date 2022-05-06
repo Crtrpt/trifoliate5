@@ -12,6 +12,6 @@ export class TPage {
   maxId: number = 0;
   getMaxId() {
     this.maxId = this.maxId + 1;
-    return this.maxId;
+    return this.maxId+"";
   }
 }

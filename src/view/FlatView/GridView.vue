@@ -11,16 +11,17 @@
 <script lang="ts">
 import { range } from "d3";
 import { defineComponent, nextTick } from "vue";
-import { mapGetters } from "vuex";
+import { mapGetters } from "pinia";
+import { pageStore } from "../../pinia/pageStore";
 
 export default defineComponent({
   name: "GridView",
   computed: {
-    ...mapGetters({
-      document: "page/getDocument",
-      selectNode: "page/getCurrentNode",
-      hoverNode: "page/getHoverNode",
-      workspace: "page/getWorkspace",
+    ...mapGetters(pageStore, {
+      document: "getDocument",
+      selectNode: "getCurrentNode",
+      hoverNode: "getHoverNode",
+      workspace: "getWorkspace",
     }),
   },
   data() {

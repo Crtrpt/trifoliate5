@@ -50,19 +50,24 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { mapGetters } from "vuex";
+import { mapState } from "pinia";
 import AbstractElement from "../../abstract/AbstractElement.vue";
 import DragNodeMixin from "../../behavior/dragNode";
+import { pageStore } from "../../pinia/pageStore";
 
 export default defineComponent({
   mixins: [DragNodeMixin],
   name: "DocView",
+  setup() {
+    const page = pageStore()
+    return { page }
+  },
   computed: {
-    ...mapGetters({
-      document: "page/getDocument",
-      selectNode: "page/getCurrentNode",
-      hoverNode: "page/getHoverNode",
-      workspace: "page/getWorkspace",
+    ...mapState( pageStore,{
+      document: "getDocument",
+      selectNode: "getCurrentNode",
+      hoverNode: "getHoverNode",
+      workspace: "getWorkspace",
     }),
   },
   components: { AbstractElement },

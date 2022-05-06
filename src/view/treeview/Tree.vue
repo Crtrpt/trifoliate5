@@ -87,6 +87,7 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import { pageStore } from "../../pinia/pageStore";
 import TNode from "../../type/tnode";
 
 export default defineComponent({
@@ -96,6 +97,10 @@ export default defineComponent({
     selectNode: Object,
     hoverNode: Object,
   },
+    setup() {
+    const page = pageStore()
+    return { page }
+  },
   data() {
     return {
       expland: false,
@@ -103,23 +108,23 @@ export default defineComponent({
   },
   methods: {
     setAttrToggle(e: Event, attrName: String) {
-      this.$store.dispatch("page/setAttrToggle", {
+      this.page.setAttrToggle({
         data: this.data,
         attrName: attrName,
       });
       e.stopPropagation();
     },
     removeNode(e: Event) {
-      this.$store.dispatch("page/removeNode", this.data);
+      this.page.removeNode(this.data);
       e.stopPropagation();
     },
     mouseenter(e: Event) {
-      this.$store.dispatch("page/hoverNode", this.data);
+      this.page.setHoverNode(this.data);
       e.stopPropagation();
     },
     click(e: Event) {
       this.expland = !this.expland;
-      this.$store.dispatch("page/selectNode", this.data);
+      this.page.setSelectNode(this.data);
       e.stopPropagation();
     },
   },

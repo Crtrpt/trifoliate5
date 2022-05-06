@@ -1,7 +1,8 @@
-const nodeList = {
-  namespaced: true,
-  state: () => {
-    return {
+import { defineStore } from 'pinia'
+
+
+export const nodeStore = defineStore("nodeList",{
+  state: () =>({
       nodeList: [
         {
           name: "base",
@@ -86,31 +87,18 @@ const nodeList = {
         },
       ],
       curNode: null,
-    };
-  },
+  }),
   getters: {
     getNodeList: (state: any, getters: any) => {
-      console.log("获取nodelist");
       return state.nodeList;
     },
     getCurNode: (state: any, getters: any) => {
-      console.log("获取nodelist");
       return state.curNode;
     },
   },
   actions: {
-    setCurNode: {
-      root: false,
-      handler(namespacedContext: any, payload: any) {
-        namespacedContext.commit("setCurNode", payload);
-      },
+    setCurNode(payload: any) {
+      this.curNode = payload;
     },
   },
-  mutations: {
-    setCurNode(state: any, payload: any) {
-      state.curNode = payload;
-    },
-  },
-};
-
-export default nodeList;
+});

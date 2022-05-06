@@ -27,18 +27,7 @@
 
     <div
       v-if="selectNode != null"
-      class="
-        width_figure
-        absolute
-        border border-blue-400
-        bg-blue-200
-        h-2
-        opacity-50
-        text-center
-        transition-all
-        hover:bg-blue-300
-        cursor-grab
-      "
+      class="width_figure absolute border border-blue-400 bg-blue-200 h-2 opacity-50 text-center transition-all hover:bg-blue-300 cursor-grab"
       :style="{
         height: '30px',
         width: style.width,
@@ -55,17 +44,7 @@
 
     <div
       v-if="selectNode != null"
-      class="
-        height_figure
-        absolute
-        border border-blue-400
-        bg-blue-200
-        w-2
-        opacity-50
-        transition-all
-        cursor-grab
-        hover:bg-blue-300
-      "
+      class="height_figure absolute border border-blue-400 bg-blue-200 w-2 opacity-50 transition-all cursor-grab hover:bg-blue-300"
       :style="{
         width: '30px',
         height: style.height,
@@ -84,33 +63,34 @@
 
 <script lang="ts">
 import { defineComponent, nextTick } from "vue";
-import { mapGetters } from "vuex";
+import { mapGetters } from "pinia";
 import { range } from "d3-array";
+import { pageStore } from "../../pinia/pageStore";
 
 export default defineComponent({
   name: "RulerView",
+  setup() {
+    const page = pageStore();
+    return { page };
+  },
   computed: {
-    ...mapGetters({
-      document: "page/getDocument",
-      hoverNode: "page/getHoverNode",
-      workspace: "page/getWorkspace",
+    ...mapGetters(pageStore, {
+      document: "getDocument",
+      hoverNode: "getHoverNode",
+      workspace: "getWorkspace",
     }),
     selectNode: {
       get() {
-        var node = this.$store.getters["page/getCurrentNode"];
+        var node = this.page.getCurrentNode;
         // console.log("==================================");
         if (node) {
           var el = node.attr.get("el");
           var rect = el?.getBoundingClientRect();
-
           var wrect = this.$parent?.$el?.getBoundingClientRect();
-          // console.log(rect);
           this.style.width = parseInt(rect.width) + "px";
           this.style.height = parseInt(rect.height) + "px";
           this.style.top = rect.top - wrect.top + "px";
           this.style.left = rect.left - wrect.left + "px";
-          // this.position = node.style.position;
-          // console.log( this.style);
         }
 
         return node;
@@ -136,14 +116,16 @@ export default defineComponent({
       deep: true,
       handler(n, o) {
         setTimeout(() => {
-          var el = n.attr.get("el");
-          var rect = el?.getBoundingClientRect();
-          var wrect = this.$parent?.$el?.getBoundingClientRect();
-          // console.log(rect);
-          this.style.width = parseInt(rect.width) + "px";
-          this.style.height = parseInt(rect.height) + "px";
-          this.style.top = rect.top - wrect.top + "px";
-          this.style.left = rect.left - wrect.left + "px";
+          if (n) {
+            var el = n.attr.get("el");
+            var rect = el?.getBoundingClientRect();
+            var wrect = this.$parent?.$el?.getBoundingClientRect();
+            // console.log(rect);
+            this.style.width = parseInt(rect.width) + "px";
+            this.style.height = parseInt(rect.height) + "px";
+            this.style.top = rect.top - wrect.top + "px";
+            this.style.left = rect.left - wrect.left + "px";
+          }
         }, 500);
       },
     },

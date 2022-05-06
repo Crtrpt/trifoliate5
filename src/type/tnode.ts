@@ -7,12 +7,12 @@ class TNode {
   // data: Object;
   level?: number;
   style?: Object;
-  props?: Object;
+  props?: {};
   slot?: Map<string, TNode[]>;
   attr?: Map<string, Object>;
   type: String;
   constructor(tempNode: any) {
-    var nameSeg = tempNode.name.split("-");
+    console.log(tempNode);
     this.name = nameGen(tempNode.name);
 
     this.type = tempNode.type;

@@ -42,7 +42,8 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { mapGetters } from "vuex";
+import { mapGetters } from "pinia";
+import { pageStore } from "../../pinia/pageStore";
 
 export default defineComponent({
   name: "DragoverView",
@@ -59,13 +60,15 @@ export default defineComponent({
       },
     };
   },
+  setup() {
+    const page = pageStore()
+    return { page }
+  },
   computed: {
-    // ...mapGetters({
-    //   selectNode: "page/getCurrentNode",
-    // }),
     dragoverNode: {
       get() {
-        var dragNode = this.$store.getters["page/getDragoverNode"];
+        console.log(this.page);
+        var dragNode = this.page.getDragoverNode;
         // console.log("dragover============");
         // console.log(dragNode);
         if (dragNode) {
@@ -83,12 +86,10 @@ export default defineComponent({
       set(value: any) {},
     },
   },
-  components: {},
+
 });
 </script>
 
 
-<style scoped>
-</style>
 
 

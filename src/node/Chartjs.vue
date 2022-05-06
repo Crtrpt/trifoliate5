@@ -2,9 +2,9 @@
   <div :style="style">
     <canvas ref="chart" width="400"></canvas>
 
-    <Teleport to="#select_top_left">
+    <!-- <Teleport to="#select_top_left">
       <div>快速配置</div>
-    </Teleport>
+    </Teleport> -->
   </div>
 </template>
 
@@ -73,11 +73,13 @@ export default defineComponent({
       }
     },
   },
+  unmounted() {
+    if (this.ins) {
+      this.ins.destroy();
+    }
+  },
   mounted() {
     this.render();
   },
 });
 </script>
-
-
-

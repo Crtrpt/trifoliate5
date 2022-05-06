@@ -160,8 +160,6 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 
-console.log();
-
 export default defineComponent({
   name: "EnvViewport",
   methods: {

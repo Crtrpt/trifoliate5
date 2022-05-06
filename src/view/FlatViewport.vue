@@ -19,7 +19,7 @@
       @move="move"
       ref="select"
     />
-    <DragoverView class="absolute top-0" :workspaceRef="workspaceRef" />
+    <DragoverView class="absolute top-0" :workspaceRef="workspaceRef" /> 
   </WorkSpaceView>
 </template>
 

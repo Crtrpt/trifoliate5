@@ -10,27 +10,26 @@ const DragNodeMixin = {
       if (!tdstr) {
         return;
       }
+
       var td = JSON.parse(tdstr);
-      this.$store
-        .dispatch("page/addNode", {
+      this.page?.addNode({
           parent: parent,
           ...td,
-        })
-        .then(() => {
-          this.$store.dispatch("page/selectNode", {});
         });
+      this.page.setSelectNode({});
 
       this.isDrag = false;
-      this.$store.dispatch("page/cancelDragoverNode", parent);
+      this.page.cancelDragoverNode(parent);
       e.stopPropagation();
     },
     dragstart(e: DragEvent, payload: any) {
-      this["nodeList/setCurNode"](payload);
+      this["setCurNode"](payload);
+      
       e.dataTransfer?.setData(
         "Text",
         JSON.stringify({
           action: "add",
-          content: payload,
+          node: payload,
         })
       );
     },
@@ -39,16 +38,17 @@ const DragNodeMixin = {
     },
     dragenter(e: DragEvent) {
       this.isDrag = true;
-      this.$store.dispatch("page/dragoverNode", this.context);
+      console.log(this.page);
+      this.page.setDragoverNode(this.context);
       e.stopPropagation();
     },
     dragleave(e: DragEvent) {
       this.isDrag = false;
-      this.$store.dispatch("page/cancelDragoverNode", this.context);
+      this.page.cancelDragoverNode(this.context);
       e.stopPropagation();
     },
     dragover(e: DragEvent) {
-      this.$store.dispatch("page/dragoverNode", this.context);
+      this.page.setDragoverNode(this.context);
       e.preventDefault();
       e.stopPropagation();
     },

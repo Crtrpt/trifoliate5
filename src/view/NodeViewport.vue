@@ -40,23 +40,25 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { mapGetters, mapMutations } from "vuex";
+import { mapGetters, mapActions } from "pinia";
 import DragNodeMixin from "../behavior/dragNode";
+import { nodeStore } from '../pinia/nodeStore'
+
 
 export default defineComponent({
   name: "NodeViewport",
   mixins: [DragNodeMixin],
   computed: {
-    ...mapGetters({
-      group: "nodeList/getNodeList",
-      curNode: "nodeList/getCurNode",
+    ...mapGetters(nodeStore,{
+      group: "getNodeList",
+      curNode: "getCurNode",
     }),
   },
   methods: {
     click(e: Event, i: any) {
-      this["nodeList/setCurNode"](i);
+      this["setCurNode"](i);
     },
-    ...mapMutations(["nodeList/setCurNode"]),
+    ...mapActions(nodeStore,["setCurNode"]),
     expland(e: any) {
       e.expland = !e.expland;
     },
